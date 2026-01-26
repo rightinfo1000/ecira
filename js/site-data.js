@@ -167,7 +167,7 @@ const siteData = [
   
   {"category": "modular-kitchen", "file_name": "kitchenl03.jpg", "title": "ECIRA L-Shape Kitchen 03", "alt_text": "L शेप मॉड्यूलर किचन 03 पुणे | ECIRA Interior", "caption": "L-Shape Kitchen 03", "description": "Optimized L-shape kitchen design for maximum storage।"},
   
-  {"category": "modular-kitchen", "file_name": "kitchen109.jpg", "title": "ECIRA Contemporary Ready 109", "alt_text": "successfully delivered किचन 109 | ECIRA Modern", "caption": "Contemporary Ready 109", "description": "Modern contemporary ready kitchen styling।"},
+  {"category": "modular-kitchen", "file_name": "kitchenl09.jpg", "title": "ECIRA Contemporary Ready 109", "alt_text": "successfully delivered किचन 109 | ECIRA Modern", "caption": "Contemporary Ready 109", "description": "Modern contemporary ready kitchen styling।"},
   
   {"category": "modular-kitchen", "file_name": "kitchenl66.jpg", "title": "ECIRA L-Shape Kitchen 66", "alt_text": "L शेप मॉड्यूलर किचन 66 पुणे | ECIRA Design", "caption": "L-Shape Kitchen 66", "description": "Functional L-shape kitchen with ample workspace।"},
   
