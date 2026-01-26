@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Ecira Interiors</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <section style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="color: #00BFFF; margin-bottom: 20px;">Timeless Interiors</h2>
+            <p>Welcome to our Interior Design Gallery, where creativity meets functionality. Our curated portfolio showcases a diverse range of modern home interiors, from luxurious living rooms to space-optimized modular kitchens. We specialize in creating bespoke residential and commercial spaces that reflect individual style and comfort.</p>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecira Gallery</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#fff}
+
+/* Tabs */
+.gallery-tabs{
+ display:flex;
+ justify-content:center;
+ gap:10px;
+ padding:15px;
+ flex-wrap:wrap
+}
+.tab{
+ padding:8px 18px;
+ border:none;
+ border-radius:20px;
+ background:#eee;
+ cursor:pointer
+}
+.tab.active{background:#111;color:#fff}
+
+/* Grid */
+.gallery-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+ padding:12px
+}
+@media(min-width:768px){
+ .gallery-grid{grid-template-columns:repeat(4,1fr)}
+}
+
+.gallery-item{
+ position:relative;
+ border-radius:12px;
+ overflow:hidden;
+ cursor:pointer
+}
+.gallery-item img{
+ width:100%;
+ height:200px;
+ object-fit:cover;
+ display:block
+}
+
+/* Caption */
+.gallery-caption{
+ position:absolute;
+ bottom:0;
+ width:100%;
+ padding:6px;
+ font-size:13px;
+ color:#fff;
+ text-align:center;
+ background:linear-gradient(to top,rgba(0,0,0,.7),transparent)
+}
+
+/* Lightbox */
+.lightbox img{
+ transition:transform .3s ease;
+ cursor:zoom-in;
+}
+
+.lightbox img.zoomed{
+ transform:scale(2);
+ cursor:zoom-out;
+}
+
+.lightbox{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.9);
+ z-index:9999;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column
+}
+.lightbox.active{display:flex}
+.lightbox img{
+ max-width:95%;
+ max-height:70vh;
+ border-radius:10px
+}
+.lb-title{color:#fff;font-size:20px;margin-top:12px}
+.lb-desc{color:#ccc;font-size:14px;margin-top:6px;text-align:center}
+.lb-close {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  font-size: 34px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 999999 !important;  /* बहुत बड़ा कर दो */
+  background: rgba(0,0,0,0.8); /* visible background */
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+
+/* Share */
+.share{
+ display:flex;
+ gap:15px;
+ margin-top:14px
+}
+.share a{
+ width:40px;
+ height:40px;
+ border-radius:50%;
+ background:#222;
+ color:#fff;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-decoration:none;
+ font-size:14px
+}
+/* Lightbox zoom के लिए */
+#lb-img {
+  transition: transform 0.3s ease;
+  touch-action: pinch-zoom;  /* mobile pinch enable */
+  max-width: 90vw;
+  max-height: 90vh;
+}
+#lb-img { transition: transform 0.3s ease; touch-action: pinch-zoom; }
+#lb-img.zoomed { transform: scale(2.5) !important; max-width: none !important; }
+
+/* Close button perfect */
+.lb-close {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  font-size: 34px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 999999;
+  background: rgba(0,0,0,0.8);
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  text-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+</style>
+</head>
+
+<body>
+
+<div class="gallery-tabs">
+ <button class="tab active" data-category="living-room">Living Room</button>
+ <button class="tab" data-category="modular-kitchen">Modular Kitchen</button>
+ <button class="tab" data-category="wardrobe">Wardrobe</button>
+</div>
+
+<div id="gallery" class="gallery-grid"></div>
+
+<div id="lightbox" class="lightbox">
+ <div class="lb-close" onclick
+ ="closeLightbox()">×</div>
+ <img id="lb-img">
+ <div class="lb-title" id="lb-title"></div>
+ <div class="lb-desc" id="lb-desc"></div>
+ <div class="share">
+  <a id="wa" target="_blank">WA</a>
+  <a id="fb" target="_blank">FB</a>
+  <a id="tw" target="_blank">X</a>
+ </div>
+</div>
+
+<script src="js/site-data.js"></script>
+<script src="js/gallery.js"></script>
+</body>
+<!-- Main Container -->
+<div class="services-wrapper">
+
+  <!-- 3D Design Section -->
+  <section class="combo-section bg-white">
+    <h3 class="combo-h3">Advanced 3D Design</h3>
+    <p class="combo-desc">Visualize your dream space with our high-end 3D rendering and architectural modeling services before construction begins.</p>
+    <a href="3d-design.html" class="combo-btn btn-outline">Explore Designs</a>
+  </section>
+
+  <!-- Cost Calculator Section (Highlight) -->
+  <section class="combo-section bg-dark">
+    <h3 class="combo-h3 text-yellow">Smart Cost Calculator</h3>
+    <p class="combo-desc text-light">Plan your budget accurately. Get a detailed home construction estimate in <strong>less than 2 minutes</strong>.</p>
+    <a href="service.html" class="combo-btn btn-yellow">Calculate Now</a>
+  </section>
+
+  <!-- Complete Projects Section -->
+  <section class="combo-section bg-white">
+    <h3 class="combo-h3">Completed Projects</h3>
+    <p class="combo-desc">Browse through our portfolio of successfully delivered residential and commercial landmarks across the city.</p>
+    <a href="projects.html" class="combo-btn btn-outline">View Portfolio</a>
+  </section>
+
+  <!-- Free Consultation Section -->
+  <section class="combo-section bg-light">
+    <h3 class="combo-h3">Free Site Consultation</h3>
+    <p class="combo-desc">Expert advice at your doorstep. Schedule a complimentary site visit and professional evaluation today.</p>
+    <a href="contact.html" class="combo-btn btn-dark">Book Free Visit</a>
+  </section>
+
+</div>
+<link rel="stylesheet" href="footer.css">
+<div id="footer-placeholder"></div>
+<script src="footer.js"></script>
+</html>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <section style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="color: #00BFFF; margin-bottom: 20px;">Cost Calculater</h2>
+            <p>
+                Ecira Interiors is dedicated to creating innovative designs for inspired living. 
+            
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+<script src="header.js"></script>/* --- CSS INCLUDE --- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  padding: 20px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.main-wrapper { max-width: 800px; margin: auto; }
+
+.calculator {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+h2, h3, h4 { color: #00BFFF; text-align: center; margin-top: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+@media(min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+label { font-weight: 600; font-size: 13px; display: block; margin-bottom: 5px; }
+
+input, select {
+  width: 100%; padding: 12px; border: 1.5px solid #e1e1e1;
+  border-radius: 8px; font-size: 14px; box-sizing: border-box;
+}
+
+button {
+  width: 100%; padding: 15px; background: #00BFFF; color: #fff;
+  border: none; border-radius: 10px; font-size: 17px; font-weight: bold;
+  cursor: pointer; transition: 0.3s; margin-top: 10px;
+}
+
+button:hover { background: #009acd; transform: translateY(-2px); }
+
+/* --- DISCLAIMER SECTION --- */
+.disclaimer-section {
+  background: #ffffff; padding: 30px; border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 6px solid #00BFFF;
+}
+
+.info-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px;}
+@media(min-width: 650px) { .info-grid { grid-template-columns: 1fr 1fr; } }
+
+.info-box { background: #fcfdfe; padding: 15px; border-radius: 12px; border: 1px solid #edf2f7; }
+.info-box h4 { text-align: left; font-size: 15px; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;}
+
+.comparison-flex ul { list-style: none; padding: 0; font-size: 13px; margin: 0;}
+.dont-list { color: #d9534f; margin-bottom: 10px; }
+.do-list { color: #2e7d32; }
+
+.step { display: flex; align-items: center; font-size: 13px; margin-bottom: 8px; }
+.step span { background: #00BFFF; color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 8px; font-size: 11px; }
+
+.ops-note { margin-top: 20px; padding: 12px; background: #fff9e6; border-left: 4px solid #f0ad4e; font-size: 12px; border-radius: 4px; }
+
+#leadForm, #result { display: none; }
+#amount { font-size: 26px; font-weight: bold; color: #00BFFF; margin: 15px 0; text-align: center; }
+</style>
+</head>
+
+<body>
+
+<div class="main-wrapper">
+  
+  <div class="calculator">
+    <div id="calculatorUI">
+      <h2>Interior Cost Calculator</h2>
+      
+      <div class="grid">
+        <div>
+          <label>Design Level</label>
+          <select id="design">
+            <option value="1700" selected>Economy</option>
+            <option value="2200">Premium</option>
+            <option value="3000">Luxury</option>
+          </select>
+        </div>
+        <div>
+          <label>Bedrooms</label>
+          <select id="bedrooms">
+            <option value="0" selected>Studio</option>
+            <option value="1">1 Bedroom</option>
+            <option value="2">2 Bedrooms</option>
+            <option value="3">3 Bedrooms</option>
+          </select>
+        </div>
+        <div>
+          <label>Carpet Area (Sq.ft)</label>
+          <input type="number" id="carpet" placeholder="e.g. 800">
+        </div>
+        <div>
+          <label>Modular Kitchen (Running Feet)</label>
+          <input type="number" id="kitchenFeet" placeholder="e.g. 10">
+        </div>
+        <div>
+          <label>Kitchen Finish</label>
+          <select id="kitchenFinish">
+            <option value="0">Select Finish</option>
+            <option value="6500">Laminate</option>
+            <option value="9200">Acrylic</option>
+            <option value="11000">PU</option>
+          </select>
+        </div>
+        <div>
+          <label>Extra Wardrobe Area (Sq.ft)</label>
+          <input type="number" id="wardrobe" placeholder="e.g. 40">
+        </div>
+        <div>
+          <label>False Ceiling</label>
+          <select id="ceiling">
+            <option value="0">No</option>
+            <option value="150">Yes</option>
+          </select>
+        </div>
+      </div>
+      
+      <button onclick="showForm()">Calculate Cost</button>
+    </div>
+
+    <form id="leadForm" onsubmit="submitLead(event)">
+      <h3>Enter Details to View Quotation</h3>
+      <div style="margin-bottom:10px;">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter Name" required>
+      </div>
+      <div style="margin-bottom:15px;">
+        <label>Mobile Number</label>
+        <input type="tel" id="phone" placeholder="10 Digit Number" required pattern="[0-9]{10}">
+      </div>
+      <button type="submit">Show My Estimate</button>
+    </form>
+
+    <div id="result">
+      <h3>Estimated Project Cost</h3>
+      <div id="amount"></div>
+      <p style="text-align:center; color:green; font-weight:600;">Thank you! Our expert will contact you shortly.</p>
+      <button onclick="location.reload()" style="background:#666; font-size:12px; width:auto; padding:8px 15px; display:block; margin:10px auto;">Recalculate</button>
+    </div>
+  </div>
+
+  <div class="disclaimer-section">
+    <div style="text-align:center;">
+      <h3>Pricing Transparency</h3>
+      <p style="font-size:13px; color:#666;">Final pricing depends on site conditions and detailing.</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <h4>Why ECIRA Is Different</h4>
+        <div class="comparison-flex">
+          <ul class="dont-list">
+            <li>❌ No showroom overheads</li>
+            <li>❌ No forced brand tie-ups</li>
+          </ul>
+          <ul class="do-list">
+            <li>✅ Local execution partners</li>
+            <li>✅ Transparent material billing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h4>Payment Structure</h4>
+        <div class="payment-steps">
+          <div class="step"><span>5%</span> Design Initiation</div>
+          <div class="step"><span>60%</span> Execution Start</div>
+          <div class="step"><span>Bal</span> Stage-wise</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ops-note">
+      <strong>Operational Transparency:</strong> Based in <strong>Pune (Wagholi)</strong>. We work on a project-basis. Site meetings at workshops or client locations.
+    </div>
+  </div>
+
+</div>
+
+<script>
+let calculatedTotal = 0;
+
+function showForm() {
+  const getVal = (id) => Number(document.getElementById(id).value) || 0;
+
+  let designRate = getVal('design'); // 1700, 2200, or 3000
+  let bedroomCount = getVal('bedrooms');
+  let carpet = getVal('carpet');
+  let kFeet = getVal('kitchenFeet');
+  let kFinish = getVal('kitchenFinish');
+  let ward = getVal('wardrobe');
+  let ceil = getVal('ceiling');
+
+  // New Bedroom Pricing Logic
+  let bedroomPrice = 0;
+  if(designRate === 1700) bedroomPrice = bedroomCount * 100000;
+  else if(designRate === 2200) bedroomPrice = bedroomCount * 125000;
+  else if(designRate === 3000) bedroomPrice = bedroomCount * 150000;
+
+  // Calculation
+  calculatedTotal = 
+    (carpet * designRate) + 
+    bedroomPrice + 
+    (kFeet * kFinish) + 
+    (ward * 1400) + 
+    (carpet * ceil);
+
+  if(calculatedTotal <= 0) {
+    alert("Please enter carpet area or select options.");
+    return;
+  }
+
+  document.getElementById('calculatorUI').style.display = "none";
+  document.getElementById('leadForm').style.display = "block";
+}
+
+function submitLead(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+
+  let minPrice = Math.round(calculatedTotal * 0.85);
+  let maxPrice = Math.round(calculatedTotal * 1.20);
+
+  document.getElementById('amount').innerHTML = "₹ " + minPrice.toLocaleString("en-IN") + " – ₹ " + maxPrice.toLocaleString("en-IN");
+  
+  // Google Sheets Integration
+  const scriptURL = "https://script.google.com/macros/s/AKfycbyYZc_2LzGUJ0FVhqjzCUkAlU1tBimo8_FXOXMFCJPI_mC9KCu0yPGJD1x_-FGP7lRVfA/exec";
+  const formData = new URLSearchParams();
+  formData.append('name', name);
+  formData.append('phone', phone);
+  formData.append('estimated_cost', calculatedTotal);
+
+  fetch(scriptURL, { method: "POST", mode: "no-cors", body: formData });
+
+  document.getElementById('leadForm').style.display = "none";
+  document.getElementById('result').style.display = "block";
+}
+</script>
+
+<script src="header.js"></script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Interior Solutions</title>
+
+<style>
+/* ===== BASIC RESET ===== */
+*{
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+body{
+  margin:0;
+  background:#f7f9fc;
+  color:#555;
+}
+
+/* ===== SECTION ===== */
+.service-section{
+  max-width:1100px;
+  margin:40px auto;
+  padding:20px;
+}
+.service-section h2{
+  text-align:center;
+  color:#00bfff;
+  margin-bottom:10px;
+}
+.service-section p.subtitle{
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 30px;
+  color:#222;
+}
+
+/* ===== TABS ===== */
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-bottom:20px;
+}
+.tabs button{
+  border:none;
+  padding:10px 16px;
+  cursor:pointer;
+  background:#e6eef5;
+  border-radius:6px;
+  font-size:14px;
+  transition:0.3s;
+}
+.tabs button.active{
+  background:#00bfff;
+  color:#fff;
+}
+
+/* ===== TAB CONTENT ===== */
+.tab-content{
+  display:none;
+  background:#fff;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+.tab-content.active{
+  display:block;
+}
+.tab-content h3{
+  margin-top:0;
+  color:#222;
+}
+.tab-content p{
+  line-height:1.6;
+}
+
+/* ===== WHY CHOOSE ===== */
+.why-choose{
+  margin-top:40px;
+  background:#fff;
+  padding:25px;
+  border-radius:8px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+.why-choose h3{
+  margin-top:0;
+}
+.why-choose ul{
+  padding-left:20px;
+}
+.why-choose li{
+  margin-bottom:10px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .tabs button {
+    width: 100%;
+    font-size: 13px;
+    padding: 12px 8px;
+  background: #f1f5f9;   /* inactive background */
+  color: #333;           /* inactive text */
+  border: 1px solid #dbe3ea;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="service-section">
+  <h2>100% Custom Interior Solutions</h2>
+  <p class="subtitle">
+    Premium quality interiors delivered on time with zero compromise.
+  </p>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="active" onclick="openTab(event,'premium')">Premium Interior</button>
+    <button onclick="openTab(event,'kitchen')">Modular Kitchen</button>
+    <button onclick="openTab(event,'lighting')">Lighting</button>
+    <button onclick="openTab(event,'pop')">POP / Ceiling</button>
+    <button onclick="openTab(event,'furniture')">Furniture</button>
+    <button onclick="openTab(event,'renovation')">Renovation</button>
+    <button onclick="openTab(event,'planning')">Space Planning</button>
+    <button onclick="openTab(event,'visit')">Free Site Visit</button>
+  </div>
+
+  <!-- Tab Contents -->
+  <div id="premium" class="tab-content active">
+    <h3>Premium Interior</h3>
+    <p>
+      Comprehensive luxury transformation from concept to final handover.
+      We use HDMR & Birch Plywood with premium PU finishes to ensure durability,
+      elegance, and long life.
+    </p>
+  </div>
+
+  <div id="kitchen" class="tab-content">
+    <h3>Modular Kitchen</h3>
+    <p>
+      Ergonomic kitchen designs using water-proof and termite-proof materials.
+      Integrated with German hardware (Hafele / Hettich) and custom pantry pull-outs.
+    </p>
+  </div>
+
+  <div id="lighting" class="tab-content">
+    <h3>Lighting</h3>
+    <p>
+      Architectural lighting plans including cove LEDs, profile lights and
+      mood-based lighting automation to elevate your home’s ambience.
+    </p>
+  </div>
+
+  <div id="pop" class="tab-content">
+    <h3>POP / Ceiling</h3>
+    <p>
+      Designer false ceilings made with high-quality gypsum.
+      Sharp finishes, concealed wiring and perfect lighting slots guaranteed.
+    </p>
+  </div>
+
+  <div id="furniture" class="tab-content">
+    <h3>Furniture</h3>
+    <p>
+      Bespoke furniture crafted to exact dimensions – sofas, dining sets,
+      wardrobes with premium upholstery and fittings.
+    </p>
+  </div>
+
+  <div id="renovation" class="tab-content">
+    <h3>Renovation</h3>
+    <p>
+      Complete transformation of old spaces.
+      Demolition, civil work, flooring, plumbing and electrical – all managed end-to-end.
+    </p>
+  </div>
+
+  <div id="planning" class="tab-content">
+    <h3>Space Planning</h3>
+    <p>
+      Technical 2D/3D layouts designed to maximize every square foot.
+      Vastu-compliant planning with optimized light and ventilation.
+    </p>
+  </div>
+
+  <div id="visit" class="tab-content">
+    <h3>Free Site Visit</h3>
+    <p>
+      Professional on-site measurement and consultation.
+      Our designers visit your location to understand feasibility and exact requirements.
+    </p>
+  </div>
+
+  <!-- Why Choose -->
+  <div class="why-choose">
+    <h3>Why Choose Our Custom Approach?</h3>
+    <p>
+      Unlike standard packages, our solutions are tailored to your lifestyle.
+      We don’t just fill a space — we engineer it for comfort and durability.
+    </p>
+    <ul>
+      <li><strong>No Showroom Overheads:</strong> You pay for quality, not rent.</li>
+      <li><strong>Transparent Billing:</strong> Clear cost breakup with no surprises.</li>
+      <li><strong>Expert Coordination:</strong> Project-based management for on-time delivery.</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+function openTab(evt, tabId){
+  let contents = document.querySelectorAll(".tab-content");
+  let buttons = document.querySelectorAll(".tabs button");
+
+  contents.forEach(c => c.classList.remove("active"));
+  buttons.forEach(b => b.classList.remove("active"));
+
+  document.getElementById(tabId).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
+
+</body>
+</html>
+
+<div class="services-wrapper">
+
+  <!-- 3D Design Section -->
+  <section class="combo-section bg-white">
+    <h3 class="combo-h3">Advanced 3D Design</h3>
+    <p class="combo-desc">Visualize your dream space with our high-end 3D rendering and architectural modeling services before construction begins.</p>
+    <a href="3d-design.html" class="combo-btn btn-outline">Explore Designs</a>
+  </section>
+
+  <!-- Cost Calculator Section (Highlight) -->
+  <section class="combo-section bg-dark">
+    <h3 class="combo-h3 text-yellow">Book a Site Visit in Pune</h3>
+    <p class="combo-desc text-light">Plan your budget accurately. Get a detailed home estimate<strong>at Your Site</strong>.</p>
+    <a href="contact.html" class="combo-btn btn-yellow">Book Now</a>
+  </section>
+
+  <!-- Complete Projects Section -->
+  <section class="combo-section bg-white">
+    <h3 class="combo-h3">Completed Projects</h3>
+    <p class="combo-desc">Browse through our portfolio of successfully delivered residential and commercial landmarks across the city.</p>
+    <a href="projects.html" class="combo-btn btn-outline">View Portfolio</a>
+  </section>
+
+  <!-- Free Consultation Section -->
+  <section class="combo-section bg-light">
+    <h3 class="combo-h3">Explore Design Gallery</h3>
+    <p class="combo-desc">Discover why we are the most trusted architectural design firm in Pune for turning dreams into reality.</p>
+    <a href="gallery.html" class="combo-btn btn-dark">design Gallery</a>
+  </section>
+
+</div>
+<section class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      How is interior design pricing calculated?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>
+        Interior design pricing depends on scope of work, materials selected,
+        design complexity, and execution requirements. We provide a detailed
+        cost breakup to maintain complete transparency.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Is the pricing different for modular kitchens and full home interiors?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>
+        Yes. Modular kitchens are priced based on layout, materials and hardware,
+        while full home interiors include multiple spaces such as living rooms,
+        bedrooms, wardrobes, ceilings and lighting.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Do you charge per square foot for interior design?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>
+        We do not follow a rigid per square foot model. Our pricing is customized
+        based on design requirements, material quality and functionality rather
+        than just area.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      What is included in the interior design pricing?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>
+        Pricing includes design consultation, 2D/3D designs, material selection,
+        manufacturing, installation, project coordination and quality checks.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Are your interior designs customizable?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>
+        Absolutely. Every design is 100% customized to suit your lifestyle,
+        budget and space. We do not offer fixed packages.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      Is the site visit or consultation chargeable?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>
+        No. Our site visit and initial consultation are completely free,
+        allowing us to understand your requirements accurately.
+      </p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      When is the final price confirmed?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>
+        The final price is confirmed after design finalization, material
+        selection and scope approval — before execution begins.
+      </p>
+    </div>
+  </div>
+</section>
+<link rel="stylesheet" href="footer.css">
+<div id="footer-placeholder"></div>
+<script src="footer.js"></script>
+</body>
+</html>
+
+<style>
+/* ===== FAQ SECTION ===== */
+.faq-section{
+  max-width:900px;
+  margin:50px auto;
+  padding:20px;
+}
+.faq-section h2{
+  text-align:center;
+  color:#00bfff;
+  margin-bottom:30px;
+}
+
+/* ===== FAQ ITEM ===== */
+.faq-item{
+  background:#fff;
+  border-radius:8px;
+  margin-bottom:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  overflow:hidden;
+}
+
+/* ===== QUESTION ===== */
+.faq-question{
+  width:100%;
+  background:none;
+  border:none;
+  padding:16px 20px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.faq-question span{
+  font-size:20px;
+  transition:0.3s;
+}
+
+/* ===== ANSWER ===== */
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.35s ease;
+  padding:0 20px;
+}
+.faq-answer p{
+  margin:15px 0 20px;
+  color:#555;
+  line-height:1.6;
+}
+
+/* ===== ACTIVE STATE ===== */
+.faq-item.active .faq-answer{
+  max-height:300px;
+}
+.faq-item.active .faq-question span{
+  transform:rotate(45deg);
+  color:#00bfff;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  .faq-question{
+    font-size:14px;
+  }
+}
+</style>
+
+<script>
+document.querySelectorAll(".faq-question").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const item = btn.parentElement;
+
+    document.querySelectorAll(".faq-item").forEach(faq=>{
+      if(faq !== item){
+        faq.classList.remove("active");
+      }
+    });
+
+    item.classList.toggle("active");
+  });
+});
+</script>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ecira Interiors</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <section style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="color: #00BFFF; margin-bottom: 20px;">Contact Us</h2>
+            <p>
+                Ecira Interiors is dedicated to creating innovative designs for inspired living. 
+                हम आपके सपनों के घर को हकीकत में बदलने के लिए बेहतरीन इंटीरियर सॉल्यूशंस प्रदान करते हैं।
+            </p>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+
+</body>
+<head>
+<meta charset="UTF-8">
+
+<title>Contact ECIRA Interiors | Interior Design Consultation</title>
+
+<meta name="description" content="Contact ECIRA Interiors for modular kitchen, bedroom, wardrobe and full home interior design services. Book a consultation today.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+
+<style>
+body{
+  font-family:Arial, sans-serif;
+  margin:0;
+  background:#f7f7f7;
+  color:#222;
+}
+.container{
+  max-width:600px;
+  margin:40px auto;
+  background:#fff;
+  padding:24px;
+  border-radius:8px;
+  box-shadow:0 0 10px rgba(0,0,0,.08);
+}
+h1{
+  text-align:center;
+  margin-bottom:10px;
+}
+p{
+  text-align:center;
+  margin-bottom:20px;
+  color:#555;
+}
+form{
+  display:flex;
+  flex-direction:column;
+}
+label{
+  font-weight:600;
+  margin-bottom:6px;
+}
+input,textarea{
+  padding:10px;
+  margin-bottom:16px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  font-size:15px;
+}
+textarea{
+  resize:vertical;
+  min-height:100px;
+}
+button{
+  background:#0a58ca;
+  color:#fff;
+  padding:12px;
+  font-size:16px;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+}
+button:hover{
+  background:#084298;
+}
+.status{
+  margin-top:15px;
+  text-align:center;
+  font-weight:600;
+}
+.success{ color:green; }
+.error{ color:red; }
+
+@media(max-width:600px){
+  .container{
+    margin:20px;
+    padding:18px;
+  }
+}
+</style>
+<link rel="stylesheet" href="footer.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Contact ECIRA Interiors</h1>
+<p>Get in touch with us for interior design consultation and project inquiries.</p>
+
+<form id="contactForm">
+
+  <label for="name">Name *</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="phone">Phone *</label>
+  <input type="tel" id="phone" name="phone" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email">
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message"></textarea>
+
+  <button type="submit">Send Message</button>
+
+</form>
+
+<div id="status" class="status"></div>
+
+</div>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbyYZc_2LzGUJ0FVhqjzCUkAlU1tBimo8_FXOXMFCJPI_mC9KCu0yPGJD1x_-FGP7lRVfA/exec";
+const form = document.getElementById("contactForm");
+const statusDiv = document.getElementById("status");
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  statusDiv.textContent = "Sending...";
+  statusDiv.className = "status";
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: new FormData(form)
+  })
+  .then(response => {
+    statusDiv.textContent = "Thank you! Your message has been sent successfully.";
+    statusDiv.classList.add("success");
+    form.reset();
+  })
+  .catch(error => {
+    statusDiv.textContent = "Something went wrong. Please try again.";
+    statusDiv.classList.add("error");
+  });
+});
+</script>
+<!-- Main Container -->
+<div class="services-wrapper">
+
+  <!-- 3D Design Section -->
+  <section class="combo-section bg-white">
+    <h3 class="combo-h3">Advanced 3D Design</h3>
+    <p class="combo-desc">Visualize your dream space with our high-end 3D rendering and architectural modeling services before construction begins.</p>
+    <a href="3d-design.html" class="combo-btn btn-outline">Explore Designs</a>
+  </section>
+
+  <!-- Cost Calculator Section (Highlight) -->
+  <section class="combo-section bg-dark">
+    <h3 class="combo-h3 text-yellow">Smart Cost Calculator</h3>
+    <p class="combo-desc text-light">Plan your budget accurately. Get a detailed home construction estimate in <strong>less than 2 minutes</strong>.</p>
+    <a href="service.html" class="combo-btn btn-yellow">Calculate Now</a>
+  </section>
+
+  <!-- Complete Projects Section -->
+  <section class="combo-section bg-white">
+    <h3 class="combo-h3">Completed Projects</h3>
+    <p class="combo-desc">Browse through our portfolio of successfully delivered residential and commercial landmarks across the city.</p>
+    <a href="projects.html" class="combo-btn btn-outline">View Portfolio</a>
+  </section>
+
+  <!-- Free Consultation Section -->
+  <section class="combo-section bg-light">
+    <h3 class="combo-h3">Explore Design Gallery</h3>
+    <p class="combo-desc">Discover why we are the most trusted architectural design firm in Pune for turning dreams into reality.</p>
+    <a href="gallery.html" class="combo-btn btn-dark">design Gallery</a>
+  </section>
+
+</div>
+
+<link rel="stylesheet" href="footer.css">
+<div id="footer-placeholder"></div>
+<script src="footer.js"></script>
+</body>
+</html>

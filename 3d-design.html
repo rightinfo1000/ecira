@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D View - Ecira Interiors</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <section style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="color: #00BFFF; margin-bottom: 20px;">3D View</h2>
+            <p>Step inside your dream space before it’s built. Use our interactive 360° viewer to explore every detail of Ecira Interiors' premium architectural designs—from modern kitchens to luxury living rooms.
+            </p>
+        </section>
+    </main>
+
+    <script src="header.js"></script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Home Tour - Ecira Interiors</title>
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+    <style>
+    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+    #panorama { width: 100%; height: 100vh; }
+
+    /* बटन को छोटा और कम जगह घेरने वाला बनाने के लिए */
+    .controls {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        display: flex;
+        gap: 6px;
+        background: rgba(0, 0, 0, 0.4); /* हल्का पारदर्शी काला */
+        padding: 5px 10px;
+        border-radius: 30px;
+        backdrop-filter: blur(5px);
+    }
+
+    .ctrl-btn {
+        background: #fff;
+        border: none;
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 20px;
+        font-size: 11px; /* छोटा साइज */
+        font-weight: bold;
+        color: #333;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="tour-title">
+    <h2 style="margin:0;">Ecira Interiors</h2>
+    <p style="margin:0; font-size: 14px;">3D Virtual Tour</p>
+</div>
+
+<div id="panorama"></div>
+
+<div class="controls">
+    <button class="ctrl-btn" onclick="viewer.loadScene('bedroom')">Bedroom</button>
+    <button class="ctrl-btn" onclick="viewer.loadScene('home1')">Home</button>
+    <button class="ctrl-btn" onclick="viewer.loadScene('kitchen')">Kitchen</button>
+    <button class="ctrl-btn" onclick="viewer.loadScene('livingroom')">Livingroom</button>
+</div>
+
+
+<script>
+    var viewer = pannellum.viewer('panorama', {
+        "default": {
+            "firstScene": "livingroom",
+            "author": "Ecira Interiors",
+            "sceneFadeDuration": 1000,
+            "autoLoad": true,
+            "autoRotate": -2
+        },
+
+        "scenes": {
+            "bedroom": {
+                "title": "Bedroom",
+                "type": "equirectangular",
+                "panorama": "image/3dbedroom12.jpg"
+            },
+            "home1": {
+                "title": "Home View 1",
+                "type": "equirectangular",
+                "panorama": "image/3dhome.jpg"
+            },
+            "homeWebp": {
+                "title": "Home View (WebP)",
+                "type": "equirectangular",
+                "panorama": "image/3dhome.webp"
+            },
+            "kitchen": {
+                "title": "Kitchen",
+                "type": "equirectangular",
+                "panorama": "image/3dkitchen9.jpg"
+            },
+            "livingroom": {
+                "title": "Living Room",
+                "type": "equirectangular",
+                "panorama": "image/3dlivingroom.jpg"
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

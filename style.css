@@ -1,0 +1,944 @@
+/* --- 1. Basic Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    outline: none; /* क्लिक करने पर आने वाली नीली लाइन हटाने के लिए */
+    -webkit-tap-highlight-color: transparent; /* मोबाइल टच हाईलाइट हटाने के लिए */
+}
+
+body {
+    background-color: #ffffff;
+    overflow-x: hidden;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* --- 2. Fixed Header --- */
+.site-header {
+    background-color: #00BFFF;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img { height: 48px; display: block; }
+
+.header-text {
+    color: white;
+    text-align: left;
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: clamp(14px, 4vw, 20px);
+    line-height: 1.2;
+    padding-left: 10px;
+}
+
+.header-text span { display: block; font-size: 11px; font-weight: normal; opacity: 0.9; }
+
+/* Desktop Navigation */
+.site-nav { display: flex; gap: 20px; list-style: none; }
+.site-nav a { color: white; text-decoration: none; font-size: 15px; font-weight: 500; }
+
+.menu-icon { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.menu-icon span { width: 25px; height: 3px; background-color: white; border-radius: 2px; }
+
+/* --- 3. Hero Section --- */
+main { margin-top: 80px; }
+
+.hero { width: 100%; text-align: center; }
+
+.hero-content {
+    max-width: 1000px;
+    margin: 0 auto 15px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: clamp(24px, 5vw, 35px);
+    color: #333;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.hero p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.hero-image-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- 4. Gallery Header (Fix: Centering & Spacing) --- */
+.gallery-header {
+    padding: 30px 20px 0px; /* नीचे की जगह खत्म की */
+    text-align: center;
+    width: 100%;
+}
+
+.gallery-header h2 {
+    font-size: clamp(20px, 5vw, 20px);
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 auto 5px;
+    display: block;
+    text-align: center;
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background-color: #00BFFF;
+    margin: 0 auto 10px;
+    border-radius: 2px;
+}
+
+.gallery-header p {
+    font-size: clamp(14px, 4vw, 17px);
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 5px;
+    line-height: 1.4;
+}
+
+/* --- 5. Gallery Grid --- */
+.gallery-grid {
+    padding: 10px 0 30px; /* ऊपर की जगह कम की */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.grid-item:hover { transform: translateY(-5px); }
+
+.grid-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.grid-caption {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+    font-weight: 600;
+    background: #fdfdfd;
+}
+
+/* --- 6. Slider Styling --- */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 450px;
+    margin: 10px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide.active { opacity: 1; }
+
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: white;
+    z-index: 10;
+    max-width: 500px;
+}
+
+.slide-content h2 { font-size: 28px; color: #00BFFF; margin-bottom: 5px; }
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 100;
+}
+.next { right: 15px; }
+.prev { left: 15px; }
+
+/* --- 7. Responsive Fixes --- */
+@media (max-width: 900px) {
+    .site-nav { display: none; }
+    .menu-icon { display: flex; }
+    
+    .site-nav.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 15px;
+        background: #00BFFF;
+        width: 180px;
+        border-radius: 8px;
+        padding: 5px 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .site-nav.active a { 
+        padding: 10px 20px; 
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
+        display: block;
+    }
+}
+
+@media (max-width: 650px) {
+    .grid-container { grid-template-columns: 1fr; }
+    .slider-container { height: 300px; border-radius: 0; }
+    .slide-content { left: 20px; bottom: 20px; }
+    .slide-content h2 { font-size: 22px; }
+}
+/* --- How It Works Tabs --- */
+.how-it-works { padding: 0px 20px; background: #fefefe; }
+
+.tabs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.tabs-list {
+    display: flex;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #00BFFF;
+    border-bottom: 3px solid #00BFFF;
+}
+
+.tab-content {
+    padding: 10px;
+    display: none; /* शुरू में सब छुपे रहेंगे */
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active { display: block; }
+
+.tab-content h3 { color: #333; margin-bottom: 10px; }
+.tab-content p { color: #666; line-height: 1.6; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* मोबाइल के लिए */
+@media (max-width: 600px) {
+    .tabs-list { flex-direction: column; }
+    .tab-btn { border-bottom: 1px solid #eee; text-align: left; padding: 12px 20px; }
+    .tab-btn.active { border-bottom: 1px solid #eee; border-left: 4px solid #00BFFF; }
+}
+/* --- Gallery Grid Layout --- */
+.gallery-grid {
+    padding: 10px 0 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 कॉलम का सेटअप */
+    gap: 20px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 250px; /* आप अपनी जरूरत अनुसार कम/ज्यादा कर सकते हैं */
+    object-fit: cover;
+    display: block;
+}
+
+.grid-caption {
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+    border-top: 1px solid #eee;
+}
+
+/* 5वीं इमेज (K10) को सेंटर करने के लिए खास कोड */
+.centered-item {
+    grid-column: 1 / span 2; /* यह दोनों कॉलम की जगह लेगा */
+    justify-self: center;   /* खुद को बीच में रखेगा */
+    width: 50%;             /* ऊपर वाली इमेज के बराबर चौड़ाई (मोबाइल पर बदल जाएगा) */
+}
+
+/* मोबाइल के लिए रिस्पॉन्सिव सेटअप */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* मोबाइल पर सब एक के नीचे एक */
+    }
+    
+    .centered-item {
+        grid-column: span 1;
+        width: 100%; /* मोबाइल पर पूरी चौड़ाई */
+    }
+}
+/* --- FAQ Accordion Style --- */
+.faq-section {
+    padding: 10px 20px;
+    background-color: #f9f9f9;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: #fff;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px 20px;
+    background: #fff;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+    transition: background 0.3s;
+}
+
+.faq-question:hover {
+    background: #f1faff;
+}
+
+.faq-question.active {
+    color: #00BFFF;
+    border-bottom: 1px solid #eee;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #fff;
+}
+
+.faq-answer p {
+    padding: 20px;
+    color: #666;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.icon {
+    font-size: 20px;
+    font-weight: bold;
+    color: #00BFFF;
+}
+<style>
+</style>
+body {
+  width: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fafafa;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  border: none;
+  background: #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: #000;
+  color: #fff;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  padding: 15px;
+}
+
+@media (min-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+figure {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transform: scale(0.95);
+  opacity: 0;
+  animation: fadeZoom 0.5s forwards;
+}
+
+@keyframes fadeZoom {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+figcaption {
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 60vh;
+  border-radius: 10px;
+}
+
+.lightbox h3 {
+  color: #fff;
+  margin-top: 15px;
+}
+
+.lightbox p {
+  color: #ddd;
+  text-align: center;
+  max-width: 600px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+.ecira-marquee-container {
+    width: 100%;
+    max-width: 100%; /* ✅ Header के साथ constrain */
+    overflow: hidden;
+    background-color: #ffffff;
+    padding: 10px 0;
+    white-space: nowrap;
+    margin: 0 auto; /* ✅ Center align */
+    box-sizing: border-box; /* ✅ Padding include */
+}
+
+.ecira-marquee-content {
+    display: inline-flex;
+    animation: marqueeAnimation 20s linear infinite;
+    width: 100%; /* ✅ Container के अंदर रहे */
+}
+
+.ecira-card {
+    background-color: #00BFFF;
+    color: #000000;
+    width: 280px;
+    min-width: 280px; /* ✅ Fixed width */
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    white-space: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.2s;
+}
+
+.ecira-marquee-container:hover .ecira-marquee-content {
+    animation-play-state: paused;
+}
+
+.card-icon {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.ecira-card h3 {
+    margin: 10px 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.ecira-card p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+@keyframes marqueeAnimation {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ✅ सही Mobile Media Query */
+@media (max-width: 768px) { /* 100% ➜ 768px */
+    .ecira-marquee-container {
+        padding: 8px 10px;
+        max-width: 100vw; /* Screen width limit */
+    }
+    
+    .ecira-card {
+        width: 200px;
+        min-width: 200px;
+        padding: 12px;
+        margin: 0 10px;
+    }
+    
+    .ecira-card h3 {
+        font-size: 1rem;
+    }
+
+    .card-icon {
+        font-size: 24px;
+    }
+    
+    .ecira-card p {
+        font-size: 0.8rem;
+    }
+    
+    @keyframes marqueeAnimation {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+}
+.design-cta-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #00bfff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  border: 2px solid #111;
+}
+
+.design-cta-btn:hover {
+  background-color: #ffb703; /* होवर करने पर पीला रंग */
+  color: #111;
+  border-color: #ffb703;
+  transform: translateY(-3px); /* हल्का सा ऊपर उठना */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+/* Section Container */
+.minimal-section {
+  padding: 10px 20px; /* High padding for a premium feel */
+  text-align: center;
+  background: #ffff;
+}
+
+/* Minimalist H3 Heading */
+.min-h3 {
+  font-size: 26px;
+  font-weight: 500; /* Medium weight for elegance */
+  color: #1a1a1a;
+  margin-bottom: 15px; /* Space between heading and description */
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Minimal Description */
+.min-desc {
+  font-size: 16px;
+  color: #777;
+  max-width: 550px;
+  margin: 0 auto 10px; /* Center aligned with 30px bottom margin for button */
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* Minimalist Button Link */
+.min-link-btn {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  padding: 12px 28px;
+  border: 1.5px solid #00bfff;
+  border-radius: 2px; /* Very slight curve */
+  transition: all 0.4s ease;
+  letter-spacing: 1px;
+}
+
+/* Button Hover Effect */
+.min-link-btn:hover {
+  background: #00bfff;
+  color: #00;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .minimal-section {
+    padding: 10px 15px;
+  }
+  .min-h3 {
+    font-size: 22px;
+  }
+}
+/* ================= FREE SITE VISIT SECTION ================= */
+.site-visit-section {
+  padding: 30px 20px; /* ज़्यादा पैडिंग प्रीमियम लुक देती है */
+  background-color: #fafafa; /* बहुत हल्का ग्रे बैकग्राउंड */
+  text-align: center;
+}
+
+.visit-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.visit-h3 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.visit-desc {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 35px; /* बटन और टेक्स्ट के बीच की दूरी */
+  font-weight: 300;
+}
+
+.visit-btn {
+  display: inline-block;
+  background-color: #00bfff; /* आपकी थीम का पीला रंग */
+  color: #000;
+  padding: 14px 40px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: 2px solid #3;
+}
+
+.visit-btn:hover {
+  background-color: transparent;
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* मोबाइल रिस्पॉन्सिव */
+@media (max-width: 768px) {
+  .site-visit-section {
+    padding: 20px 15px;
+  }
+  .visit-h3 {
+    font-size: 22px;
+  }
+}
+/* ================= COST CALCULATOR SECTION ================= */
+.calculator-cta {
+  padding: 90px 20px;
+  background: #111; /* डार्क प्रीमियम लुक */
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.calc-container {
+  max-width: 650px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.calc-h3 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffb703; /* हाईलाइट के लिए पीला रंग */
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.calc-desc {
+  font-size: 17px;
+  color: #ccc;
+  line-height: 1.8;
+  margin-bottom: 35px;
+  font-weight: 300;
+}
+
+/* "Less than 2 minutes" को अलग दिखाने के लिए */
+.calc-desc strong {
+  color: #fff;
+  border-bottom: 2px solid #ffb703;
+  font-weight: 600;
+}
+
+/* पॉलिश किया हुआ बटन */
+.calc-btn {
+  display: inline-block;
+  background-color: #ffb703;
+  color: #000;
+  padding: 16px 45px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 50px; /* कैप्सूल शेप बटन */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
+}
+
+.calc-btn:hover {
+  background-color: #fff;
+  transform: scale(1.05); /* हल्का सा बड़ा होना */
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+/* मोबाइल के लिए सुधार */
+@media (max-width: 768px) {
+  .calculator-cta {
+    padding: 60px 15px;
+  }
+  .calc-h3 {
+    font-size: 24px;
+  }
+  .calc-desc {
+    font-size: 15px;
+  }
+}
+/* Container Wrapper */
+.services-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Sections के बीच हल्का गैप */
+}
+
+/* Common Section Style */
+.combo-section {
+  padding: 80px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Headings */
+.combo-h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #111;
+}
+
+/* Descriptions */
+.combo-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: #555;
+  font-weight: 300;
+}
+
+/* Button Base Style */
+.combo-btn {
+  display: inline-block;
+  padding: 12px 35px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Variants (Colors) */
+.bg-white { background: #ffffff; }
+.bg-light { background: #f9f9f9; }
+.bg-dark { background: #111; color: #fff; }
+
+.text-yellow { color: #ffb703 !important; }
+.text-light { color: #ccc !important; }
+
+/* Button Styles */
+.btn-outline {
+  border: 1.5px solid #111;
+  color: #111;
+}
+.btn-outline:hover {
+  background: #111;
+  color: #fff;
+}
+
+.btn-yellow {
+  background: #ffb703;
+  color: #000;
+  border: 1.5px solid #ffb703;
+}
+.btn-yellow:hover {
+  background: transparent;
+  color: #ffb703;
+}
+
+.btn-dark {
+  background: #111;
+  color: #fff;
+  border: 1.5px solid #111;
+}
+.btn-dark:hover {
+  background: #ffb703;
+  color: #000;
+  border-color: #ffb703;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .combo-section { padding: 60px 15px; }
+  .combo-h3 { font-size: 22px; }
+  .combo-desc { font-size: 15px; }
+}
