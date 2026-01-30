@@ -1,125 +1,100 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D View - Ecira Interiors</title>
-    
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <main>
-        <section style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <h2 style="color: #00BFFF; margin-bottom: 20px;">3D View</h2>
-            <p>Step inside your dream space before it’s built. Use our interactive 360° viewer to explore every detail of Ecira Interiors' premium architectural designs—from modern kitchens to luxury living rooms.
-            </p>
-        </section>
-    </main>
-
-    <script src="header.js"></script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="hi">
-<head>
+  <script src="header.js"></script>
+     <script src="slide.js"></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Home Tour - Ecira Interiors</title>
-    
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <title>Ecira Interiors | Transforming Spaces</title>
+</head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
     <style>
-    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-    #panorama { width: 100%; height: 100vh; }
-
-    /* बटन को छोटा और कम जगह घेरने वाला बनाने के लिए */
-    .controls {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1000;
-        display: flex;
-        gap: 6px;
-        background: rgba(0, 0, 0, 0.4); /* हल्का पारदर्शी काला */
-        padding: 5px 10px;
-        border-radius: 30px;
-        backdrop-filter: blur(5px);
-    }
-
-    .ctrl-btn {
-        background: #fff;
-        border: none;
-        padding: 6px 12px;
-        cursor: pointer;
-        border-radius: 20px;
-        font-size: 11px; /* छोटा साइज */
-        font-weight: bold;
-        color: #333;
-    }
-</style>
-
+        #panorama-container {
+            width: 100%;
+            height: 500px;
+            background-color: #f0f0f0;
+        }
+        .controls {
+            margin-top: 10px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 
-<div class="tour-title">
-    <h2 style="margin:0;">Ecira Interiors</h2>
-    <p style="margin:0; font-size: 14px;">3D Virtual Tour</p>
-</div>
+<h2 style="text-align:center;">ECIRA 3D Home Render</h2>
 
-<div id="panorama"></div>
+<div id="panorama-container"></div>
 
 <div class="controls">
-    <button class="ctrl-btn" onclick="viewer.loadScene('bedroom')">Bedroom</button>
-    <button class="ctrl-btn" onclick="viewer.loadScene('home1')">Home</button>
-    <button class="ctrl-btn" onclick="viewer.loadScene('kitchen')">Kitchen</button>
-    <button class="ctrl-btn" onclick="viewer.loadScene('livingroom')">Livingroom</button>
+    <button onclick="loadScene('Image/3dhome.png')">View Scene 1</button>
+    <button onclick="loadScene('image/3dhome.webp')">View Scene 2</button>
+    <button onclick="loadScene('image/s3.jpg')">View Scene 3</button>
 </div>
 
-
 <script>
-    var viewer = pannellum.viewer('panorama', {
-        "default": {
-            "firstScene": "livingroom",
-            "author": "Ecira Interiors",
-            "sceneFadeDuration": 1000,
+    // Initial Load (Lazy Loading Function)
+    function loadScene(imagePath) {
+        pannellum.viewer('panorama-container', {
+            "type": "equirectangular",
+            "panorama": imagePath,
             "autoLoad": true,
-            "autoRotate": -2
-        },
+            "compass": true
+        });
+    }
 
-        "scenes": {
-            "bedroom": {
-                "title": "Bedroom",
-                "type": "equirectangular",
-                "panorama": "image/3dbedroom12.jpg"
-            },
-            "home1": {
-                "title": "Home View 1",
-                "type": "equirectangular",
-                "panorama": "image/3dhome.jpg"
-            },
-            "homeWebp": {
-                "title": "Home View (WebP)",
-                "type": "equirectangular",
-                "panorama": "image/3dhome.webp"
-            },
-            "kitchen": {
-                "title": "Kitchen",
-                "type": "equirectangular",
-                "panorama": "image/3dkitchen9.jpg"
-            },
-            "livingroom": {
-                "title": "Living Room",
-                "type": "equirectangular",
-                "panorama": "image/3dlivingroom.jpg"
-            }
-        }
-    });
+    // डिफ़ॉल्ट रूप से पहली इमेज लोड करें
+    window.onload = function() {
+        loadScene('Image/3dhome.png');
+    };
 </script>
+<!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Build Your Dream Home?</h2>
+            <p>Let’s create interiors that feel elegant, functional and uniquely yours.</p>
+            <a href="contact.html" class="btn">GET A FREE QUOTE</a>
+        </section>
+<!-- Main Container -->
+<div class="services-wrapper">
 
+
+<!-- Cost Calculator Section (Highlight) -->
+  <section class="combo-section bg-dark">
+    <h3 class="combo-h3 text-yellow">Smart Cost Calculator</h3>
+    <p class="combo-desc text-light">Plan your budget accurately. Get a detailed home construction estimate in <strong>less than 2 minutes</strong>.</p>
+    <a href="service.html" class="combo-btn btn-yellow">Calculate Now</a>
+  </section>
+
+  <!-- Complete Projects Section -->
+  <section class="combo-section bg-white">
+    <h3 class="combo-h3">Completed Projects</h3>
+    <p class="combo-desc">Browse through our portfolio of successfully delivered residential and commercial landmarks across the city.</p>
+    <a href="projects.html" class="combo-btn btn-outline">View Portfolio</a>
+  </section>
+  <!-- Free Consultation Section -->
+  <section class="combo-section bg-light">
+    <h3 class="combo-h3">Free Site Consultation</h3>
+    <p class="combo-desc">Expert advice at your doorstep. Schedule a complimentary site visit and professional evaluation today.</p>
+    <a href="contact.html" class="combo-btn btn-dark">Book Free Visit</a>
+  </section>
+
+</div>
+
+    </div>
+      
+ <link rel="stylesheet" href="footer.css">
+<div id="footer-placeholder"></div>
+<script src="footer.js"></script>
 </body>
 </html>
