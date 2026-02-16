@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="style.css">
   <script src="header.js"></script>
+     <script src="slide.js"></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecira Interiors | Transforming Spaces</title>
@@ -17,7 +18,7 @@
             background-color: #f0f0f0;
         }
         .controls {
-            margin-top: 70px;
+            margin-top: 10px;
             text-align: center;
         }
         button {
@@ -37,9 +38,9 @@
 <div id="panorama-container"></div>
 
 <div class="controls">
-    <button onclick="loadScene('image/3dhome.png')">View Scene 1</button>
+    <button onclick="loadScene('Image/3dhome.png')">View Scene 1</button>
     <button onclick="loadScene('image/3dhome.webp')">View Scene 2</button>
-    <button onclick="loadScene('image/S3-2048x1024.jpg')">View Scene 3</button>
+    <button onclick="loadScene('image/s3.jpg')">View Scene 3</button>
 </div>
 
 <script>
@@ -49,8 +50,6 @@
             "type": "equirectangular",
             "panorama": imagePath,
             "autoLoad": true,
-         "crossOrigin": "anonymous", 
-
             "compass": true
         });
     }
