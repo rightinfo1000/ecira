@@ -1,240 +1,350 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Ecira Interiors</title>
-    
+    <title>Interior Design Gallery | ECIRA Interiors, Pune</title>
+    <meta name="description" content="Browse ECIRA Interiors' design gallery: living rooms, modular kitchens and wardrobes completed for clients across Pune. Tap any photo for details.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ecira.in/gallery.html">
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "ECIRA Interiors Design Gallery",
+  "description": "Living room, modular kitchen and wardrobe interior design photos completed by ECIRA Interiors across Pune.",
+  "about": {
+    "@type": "LocalBusiness",
+    "name": "ECIRA Interiors",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nagar Road, Wagholi",
+      "addressLocality": "Pune",
+      "postalCode": "412207",
+      "addressCountry": "IN"
+    },
+    "telephone": "+919987228829"
+  }
+}
+</script>
 </head>
 <body>
 
-    <main>
-        <section style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <h2 style="color: #00BFFF; margin-bottom: 20px;">Timeless Interiors</h2>
-            <p>Welcome to our Interior Design Gallery, where creativity meets functionality. Our curated portfolio showcases a diverse range of modern home interiors, from luxurious living rooms to space-optimized modular kitchens. We specialize in creating bespoke residential and commercial spaces that reflect individual style and comfort.</p>
-        </section>
-    </main>
-
-    <script src="header.js"></script>
-
-<head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecira Gallery</title>
-
-<style>
-body{margin:0;font-family:Arial;background:#fff}
-
-/* Tabs */
-.gallery-tabs{
- display:flex;
- justify-content:center;
- gap:10px;
- padding:15px;
- flex-wrap:wrap
-}
-.tab{
- padding:8px 18px;
- border:none;
- border-radius:20px;
- background:#eee;
- cursor:pointer
-}
-.tab.active{background:#111;color:#fff}
-
-/* Grid */
-.gallery-grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
- padding:12px
-}
-@media(min-width:768px){
- .gallery-grid{grid-template-columns:repeat(4,1fr)}
-}
-
-.gallery-item{
- position:relative;
- border-radius:12px;
- overflow:hidden;
- cursor:pointer
-}
-.gallery-item img{
- width:100%;
- height:200px;
- object-fit:cover;
- display:block
-}
-
-/* Caption */
-.gallery-caption{
- position:absolute;
- bottom:0;
- width:100%;
- padding:6px;
- font-size:13px;
- color:#fff;
- text-align:center;
- background:linear-gradient(to top,rgba(0,0,0,.7),transparent)
-}
-
-/* Lightbox */
-.lightbox img{
- transition:transform .3s ease;
- cursor:zoom-in;
-}
-
-.lightbox img.zoomed{
- transform:scale(2);
- cursor:zoom-out;
-}
-
-.lightbox{
- display:none;
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.9);
- z-index:9999;
- align-items:center;
- justify-content:center;
- flex-direction:column
-}
-.lightbox.active{display:flex}
-.lightbox img{
- max-width:95%;
- max-height:70vh;
- border-radius:10px
-}
-.lb-title{color:#fff;font-size:20px;margin-top:12px}
-.lb-desc{color:#ccc;font-size:14px;margin-top:6px;text-align:center}
-.lb-close {
-  position: fixed;
-  top: 20px;
-  right: 25px;
-  font-size: 34px;
-  color: #fff;
-  cursor: pointer;
-  z-index: 999999 !important;  /* बहुत बड़ा कर दो */
-  background: rgba(0,0,0,0.8); /* visible background */
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  border-radius: 50%;
-}
+<header class="site-header">
+    <div class="header-container">
+        <a href="index.html" class="logo">
+            <img src="image/ecira.png" alt="ECIRA Interiors Logo">
+        </a>
+        <div class="header-text">
+            <span class="brand-domain">Ecira.in</span><span class="brand-suffix">teriors</span><br>
+            <span class="tagline">Innovative Designs for Inspired Living.</span>
+        </div>
+        <button class="menu-icon" id="menuIcon" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="siteNav">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="site-nav" id="siteNav">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="service.html">Our Service</a>
+            <a href="solar-power.html">Solar Power</a>
+            <a href="smart-home.html">Smart Home</a>
+            <a href="3d-design.html">3D Design</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+</header>
 
 
-/* Share */
-.share{
- display:flex;
- gap:15px;
- margin-top:14px
-}
-.share a{
- width:40px;
- height:40px;
- border-radius:50%;
- background:#222;
- color:#fff;
- display:flex;
- align-items:center;
- justify-content:center;
- text-decoration:none;
- font-size:14px
-}
-/* Lightbox zoom के लिए */
-#lb-img {
-  transition: transform 0.3s ease;
-  touch-action: pinch-zoom;  /* mobile pinch enable */
-  max-width: 90vw;
-  max-height: 90vh;
-}
-#lb-img { transition: transform 0.3s ease; touch-action: pinch-zoom; }
-#lb-img.zoomed { transform: scale(2.5) !important; max-width: none !important; }
+<main>
+    <div class="page-intro">
+        <h1>Timeless Interiors — Pune</h1>
+        <p>Welcome to our Interior Design Gallery, showcasing real projects completed across Pune. Our curated portfolio includes luxurious living rooms, space-optimized modular kitchens and elegant wardrobes — designed and installed for homeowners throughout the city.</p>
+    </div>
 
-/* Close button perfect */
-.lb-close {
-  position: fixed;
-  top: 20px;
-  right: 25px;
-  font-size: 34px;
-  color: #fff;
-  cursor: pointer;
-  z-index: 999999;
-  background: rgba(0,0,0,0.8);
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  border-radius: 50%;
-  text-shadow: 0 0 5px rgba(0,0,0,0.8);
-}
-</style>
-</head>
+    <div class="gallery-tabs" role="tablist">
+        <button class="tab active" data-category="living-room" role="tab" aria-selected="true">Living Room</button>
+        <button class="tab" data-category="modular-kitchen" role="tab" aria-selected="false">Modular Kitchen</button>
+        <button class="tab" data-category="wardrobe" role="tab" aria-selected="false">Wardrobe</button>
+    </div>
 
-<body>
+    <div id="gallery" class="gallery-grid-page">
+            <div class="gallery-item" >
+                <img src="image/bed1.jpg" alt="मॉड्यूलर बेडरूम डिज़ाइन पुणे | ECIRA Bedroom Interior" loading="lazy">
+                <div class="gallery-caption">Bedroom 1</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/bed45.jpg" alt="लक्ज़री मॉड्यूलर बेडरूम पुणे | ECIRA Bedroom Design" loading="lazy">
+                <div class="gallery-caption">Bedroom 45</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/bedroom.jpg" alt="क्लासिक मॉड्यूलर बेडरूम पुणे | ECIRA Bedroom Interior" loading="lazy">
+                <div class="gallery-caption">Classic Bedroom</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/Bedroom1.jpg" alt="मॉडर्न मॉड्यूलर बेडरूम डिज़ाइन पुणे | ECIRA Luxury Bedroom" loading="lazy">
+                <div class="gallery-caption">Modern Bedroom 1</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/Bedroom2.jpg" alt="प्रीमियम लक्ज़री बेडरूम पुणे | ECIRA Interior Design" loading="lazy">
+                <div class="gallery-caption">Premium Bedroom 2</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/bedroom60.jpg" alt="समकालीन बेडरूम इंटीरियर पुणे | ECIRA Modern Bedroom" loading="lazy">
+                <div class="gallery-caption">Contemporary Bedroom 60</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/bedroom63.jpg" alt="एलीगेंट मॉड्यूलर बेडरूम डिज़ाइन | ECIRA Pune Interior" loading="lazy">
+                <div class="gallery-caption">Elegant Bedroom 63</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/bedroom654.jpg" alt="लक्ज़री मॉड्यूलर बेडरूम पुणे | ECIRA Premium Design" loading="lazy">
+                <div class="gallery-caption">Luxury Bedroom 654</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/bedroom77.jpg" alt="स्टाइलिश मॉड्यूलर बेडरूम इंटीरियर | ECIRA Bedroom Pune" loading="lazy">
+                <div class="gallery-caption">Stylish Bedroom 77</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/livingroom.jpg" alt="क्लासिक लिविंग रूम डिज़ाइन पुणे | ECIRA Interior" loading="lazy">
+                <div class="gallery-caption">Classic Living Room</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/livingroom19.jpeg" alt="मॉडर्न लिविंग रूम इंटीरियर 19 पुणे | ECIRA Design" loading="lazy">
+                <div class="gallery-caption">Modern Living 19</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/livingroom29.jpg" alt="प्रीमियम लिविंग रूम डिज़ाइन | ECIRA Luxury Pune" loading="lazy">
+                <div class="gallery-caption">Premium Living 29</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/livingroom45.jpeg" alt="समकालीन लिविंग रूम 45 पुणे | ECIRA Modern Interior" loading="lazy">
+                <div class="gallery-caption">Contemporary Living 45</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/livingroom62.jpg" alt="एलीगेंट लिविंग रूम इंटीरियर पुणे | ECIRA Design" loading="lazy">
+                <div class="gallery-caption">Elegant Living 62</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/livingroom65.jpg" alt="लक्ज़री लिविंग रूम डिज़ाइन 65 | ECIRA Premium Pune" loading="lazy">
+                <div class="gallery-caption">Luxury Living 65</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/livingroom654.jpg" alt="डिज़ाइनर लिविंग रूम 654 पुणे | ECIRA Interior" loading="lazy">
+                <div class="gallery-caption">Designer Living 654</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/livingroom754.jpg" alt="स्टाइलिश लिविंग रूम इंटीरियर | ECIRA Modern Pune" loading="lazy">
+                <div class="gallery-caption">Stylish Living 754</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/luxurybedroom.jpg" alt="लक्ज़री लिविंग बेडरूम कॉम्बो पुणे | ECIRA Premium" loading="lazy">
+                <div class="gallery-caption">Luxury Living Bedroom</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/Mandir14.jpg" alt="होम मंदिर डिज़ाइन लिविंग रूम पुणे | ECIRA Mandir Unit" loading="lazy">
+                <div class="gallery-caption">Home Mandir 14</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/Sofa11.jpg" alt="लक्ज़री सोफा सेट लिविंग रूम | ECIRA Sofa Design Pune" loading="lazy">
+                <div class="gallery-caption">Luxury Sofa 11</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/studyroom.jpg" alt="लिविंग रूम स्टडी टेबल कॉम्बो पुणे | ECIRA Multi-functional" loading="lazy">
+                <div class="gallery-caption">Living Study Combo</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/Tv.jpg" alt="क्लासिक टीवी यूनिट लिविंग रूम | ECIRA TV Cabinet Pune" loading="lazy">
+                <div class="gallery-caption">Classic TV Unit</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/Tv1.png" alt="मॉडर्न टीवी यूनिट डिज़ाइन पुणे | ECIRA Living Room" loading="lazy">
+                <div class="gallery-caption">Modern TV Unit 1</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/tvunit0.jpg" alt="बेसिक टीवी यूनिट लिविंग रूम | ECIRA TV Cabinet" loading="lazy">
+                <div class="gallery-caption">Basic TV Unit</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/tvunit05.jpg" alt="प्रीमियम टीवी यूनिट 05 पुणे | ECIRA Luxury TV Cabinet" loading="lazy">
+                <div class="gallery-caption">Premium TV Unit 05</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/tvunit12.jpg" alt="डिज़ाइनर टीवी यूनिट लिविंग रूम | ECIRA Modern Design" loading="lazy">
+                <div class="gallery-caption">Designer TV Unit 12</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/tvunit16.jpg" alt="समकालीन टीवी यूनिट 16 पुणे | ECIRA Living Room" loading="lazy">
+                <div class="gallery-caption">Contemporary TV 16</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/tvunit42.jpg" alt="लक्ज़री टीवी यूनिट 42 | ECIRA Premium Living Room" loading="lazy">
+                <div class="gallery-caption">Luxury TV Unit 42</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/tvunit70.jpg" alt="वाल माउंट टीवी यूनिट 70 पुणे | ECIRA Floating Design" loading="lazy">
+                <div class="gallery-caption">Wall Mount TV 70</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/3dbedroom12.jpg" alt="3D बेडरूम विज़ुअलाइज़ेशन 12 पुणे | ECIRA 3D Interior" loading="lazy">
+                <div class="gallery-caption">3D Bedroom 12</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/3dlivingroom.jpg" alt="3D लिविंग रूम रेंडर पुणे | ECIRA Interior Design" loading="lazy">
+                <div class="gallery-caption">3D Living Room</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/3dlivingroom12.jpg" alt="3D लिविंग रूम 12 | ECIRA Premium Interior" loading="lazy">
+                <div class="gallery-caption">3D Living Room 12</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/3dlivingroom2.jpg" alt="3D लिविंग रूम डिज़ाइन 2 पुणे | ECIRA Visualization" loading="lazy">
+                <div class="gallery-caption">3D Living Room 2</div>
+            </div>
+            <div class="gallery-item" >
+                <img src="image/3dlivingroom3.jpg" alt="3D लिविंग रूम 3 | ECIRA Luxury Design" loading="lazy">
+                <div class="gallery-caption">3D Living Room 3</div>
+            </div>
+    </div>
+    <div class="services-wrapper">
+    <section class="combo-section bg-white">
+        <h3 class="combo-h3">Advanced 3D Design</h3>
+        <p class="combo-desc">Visualize your dream space with our high-end 3D rendering and architectural modeling services before construction begins.</p>
+        <a href="3d-design.html" class="combo-btn btn-outline">Explore Designs</a>
+    </section>
 
-<div class="gallery-tabs">
- <button class="tab active" data-category="living-room">Living Room</button>
- <button class="tab" data-category="modular-kitchen">Modular Kitchen</button>
- <button class="tab" data-category="wardrobe">Wardrobe</button>
+    <section class="combo-section bg-dark">
+        <h3 class="combo-h3 text-yellow">Smart Home Automation</h3>
+        <p class="combo-desc text-light">Control your lights and appliances from your phone with modern light fittings and smart automation.</p>
+        <a href="smart-home.html" class="combo-btn btn-yellow">Explore Smart Home</a>
+    </section>
+
+    <section class="combo-section bg-light">
+        <h3 class="combo-h3">Solar Power Solutions</h3>
+        <p class="combo-desc">Cut electricity bills with rooftop solar panels and reliable battery backup — clean energy for your home.</p>
+        <a href="solar-power.html" class="combo-btn btn-dark">Explore Solar Power</a>
+    </section>
+
+    <section class="combo-section bg-white">
+        <h3 class="combo-h3">Completed Projects</h3>
+        <p class="combo-desc">Browse through our portfolio of successfully delivered residential and commercial landmarks across Pune.</p>
+        <a href="projects.html" class="combo-btn btn-outline">View Portfolio</a>
+    </section>
 </div>
-
-<div id="gallery" class="gallery-grid"></div>
+</main>
 
 <div id="lightbox" class="lightbox">
- <div class="lb-close" onclick
- ="closeLightbox()">×</div>
- <img id="lb-img">
- <div class="lb-title" id="lb-title"></div>
- <div class="lb-desc" id="lb-desc"></div>
- <div class="share">
-  <a id="wa" target="_blank">WA</a>
-  <a id="fb" target="_blank">FB</a>
-  <a id="tw" target="_blank">X</a>
- </div>
+    <button class="lb-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+    <img id="lb-img" alt="">
+    <div class="lb-title" id="lb-title"></div>
+    <div class="lb-desc" id="lb-desc"></div>
+    <div class="share">
+        <a id="wa" target="_blank" rel="noopener" aria-label="Share on WhatsApp">WA</a>
+        <a id="fb" target="_blank" rel="noopener" aria-label="Share on Facebook">FB</a>
+        <a id="tw" target="_blank" rel="noopener" aria-label="Share on X">X</a>
+    </div>
 </div>
+
+<div class="side-enquiry-btns left-side">
+    <button class="enq-btn" onclick="openPopup()">ENQUIRY</button>
+    <a href="service.html" class="enq-btn quote-btn">GET QUOTE</a>
+</div>
+
+<footer class="premium-footer-3col">
+    <div class="footer-container-3col">
+        <div class="footer-col">
+            <h3>Premium Interior Solutions</h3>
+            <p>Premium interior solutions delivering modern design, functionality, and flawless execution.</p>
+            <div class="features">
+                <span>✔ 100% Customized Interiors</span>
+                <span>✔ 10 Years Warranty</span>
+                <span>✔ Transparent Pricing</span>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="service.html">Calculator</a></li>
+                <li><a href="service.html">Our Services</a></li>
+                <li><a href="3d-design.html">3D Design</a></li>
+                <li><a href="gallery.html">Design Gallery</a></li>
+                <li><a href="projects.html">Completed Projects</a></li>
+                <li><a href="smart-home.html">Smart Home</a></li>
+                <li><a href="solar-power.html">Solar Power</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <p>📞 <a href="tel:+919987228829">99872 28829</a></p>
+            <p>💬 <a href="https://wa.me/919987228829">WhatsApp</a></p>
+            <p>✉️ <a href="mailto:my@ecira.in">my@ecira.in</a></p>
+            <p>Nagar Road Wagholi<br>Pune 412207</p>
+            <div class="social">
+                <a href="https://www.facebook.com/profile.php?id=61584722850614" target="_blank" rel="noopener">Facebook</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="share-links">
+            <span>Share:</span> FB | WA | IN | X | <span onclick="copyLink()" style="color:#00d4aa; cursor:pointer;">Copy</span>
+        </div>
+        <p>&copy; 2026 ECIRA Interiors. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<a href="https://wa.me/919987228829" class="whatsapp-fixed-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <img src="image/whatsapp-icon.svg" alt="WhatsApp">
+</a>
+
+<div class="mobile-sticky-nav" id="mobileNav">
+    <a href="index.html">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5z"/></svg>
+        <span>Home</span>
+    </a>
+    <a href="service.html">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
+        <span>Calculator</span>
+    </a>
+    <a href="3d-design.html">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <span>3D Design</span>
+    </a>
+    <a href="gallery.html">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Gallery</span>
+    </a>
+    <a href="smart-home.html">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21V12h6v9"/><path d="M3 10l9-7 9 7"/><path d="M19 10v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9"/></svg>
+        <span>Smart Home</span>
+    </a>
+</div>
+
+<div id="enquiryPopup" class="popup-overlay">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()" aria-label="Close">&times;</button>
+        <div id="formContainer">
+            <h2>Enquiry</h2>
+            <form id="g-form" onsubmit="handleFormSubmit(event)">
+                <input type="text" name="name" placeholder="Name *" required>
+                <input type="tel" name="phone" placeholder="Phone Number *" required>
+                <button type="submit" id="submitBtn">SUBMIT</button>
+            </form>
+        </div>
+        <div id="thankYouMsg" style="display:none; text-align:center; padding:20px;">
+            <h3 style="color:#28a745;">Thank you!</h3>
+            <p>We'll contact you within 24 hours.</p>
+        </div>
+    </div>
+</div>
+
 
 <script src="js/site-data.js"></script>
+<script src="js/site-behavior.js"></script>
 <script src="js/gallery.js"></script>
 </body>
-<!-- Main Container -->
-<div class="services-wrapper">
-
-  <!-- 3D Design Section -->
-  <section class="combo-section bg-white">
-    <h3 class="combo-h3">Advanced 3D Design</h3>
-    <p class="combo-desc">Visualize your dream space with our high-end 3D rendering and architectural modeling services before construction begins.</p>
-    <a href="3d-design.html" class="combo-btn btn-outline">Explore Designs</a>
-  </section>
-
-  <!-- Cost Calculator Section (Highlight) -->
-  <section class="combo-section bg-dark">
-    <h3 class="combo-h3 text-yellow">Smart Cost Calculator</h3>
-    <p class="combo-desc text-light">Plan your budget accurately. Get a detailed home construction estimate in <strong>less than 2 minutes</strong>.</p>
-    <a href="service.html" class="combo-btn btn-yellow">Calculate Now</a>
-  </section>
-
-  <!-- Complete Projects Section -->
-  <section class="combo-section bg-white">
-    <h3 class="combo-h3">Completed Projects</h3>
-    <p class="combo-desc">Browse through our portfolio of successfully delivered residential and commercial landmarks across the city.</p>
-    <a href="projects.html" class="combo-btn btn-outline">View Portfolio</a>
-  </section>
-
-  <!-- Free Consultation Section -->
-  <section class="combo-section bg-light">
-    <h3 class="combo-h3">Free Site Consultation</h3>
-    <p class="combo-desc">Expert advice at your doorstep. Schedule a complimentary site visit and professional evaluation today.</p>
-    <a href="contact.html" class="combo-btn btn-dark">Book Free Visit</a>
-  </section>
-
-</div>
-<link rel="stylesheet" href="footer.css">
-<div id="footer-placeholder"></div>
-<script src="footer.js"></script>
 </html>
