@@ -48,13 +48,6 @@
 <changefreq>monthly</changefreq>
 <priority>0.80</priority>
 </url>
-<!--  Turnkey Cost Calculator  -->
-<url>
-<loc>https://ecira.in/service.html</loc>
-<lastmod>2026-07-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.70</priority>
-</url>
 <!--  About Us Studio Page  -->
 <url>
 <loc>https://ecira.in/about.html</loc>
