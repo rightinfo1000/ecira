@@ -1,295 +1,812 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Architectural LED Lighting Solutions &amp; Layout Design | ECIRA, Pune</title>
-    <meta name="description" content="Premium architectural lighting solutions in Pune by ECIRA. We design and install magnetic track lights, customized linear profiles, and anti-glare COB lights in Wagholi and Kharadi.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://ecira.in/lighting.html">
+    <title>Services & Cost Calculator - Ecira Interiors</title>
     <link rel="stylesheet" href="style.css">
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Architectural Lighting Design and Installation",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "ECIRA",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nagar Road, Wagholi",
-      "addressLocality": "Pune",
-      "postalCode": "412207",
-      "addressCountry": "IN"
-    },
-    "telephone": "+919987228829"
-  },
-  "areaServed": "Pune",
-  "description": "Premium architectural lighting design, layout planning, lux level optimization, magnetic tracks, and profile LED integration for smart luxury homes."
-}
-</script>
+    <link rel="stylesheet" href="footer.css">
+
+    <style>
+        /* ===== GLOBAL & LAYOUT RESET ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .main-container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            color: #00BFFF;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #555;
+            font-size: 15px;
+        }
+
+        /* ===== CALCULATOR SECTION ===== */
+        .calculator-wrapper {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        .calculator-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .calculator-card h2, .calculator-card h3 {
+            color: #00BFFF;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media(min-width: 600px) {
+            .calc-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .calc-field label {
+            font-weight: 600;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        .calc-field input, .calc-field select {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .calc-field input:focus, .calc-field select:focus {
+            border-color: #00BFFF;
+        }
+
+        .calc-btn {
+            width: 100%;
+            padding: 14px;
+            background: #00BFFF;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .calc-btn:hover {
+            background: #009acd;
+            transform: translateY(-2px);
+        }
+
+        /* Forms & Results Display Toggle */
+        #leadForm, #result {
+            display: none;
+        }
+
+        #amount {
+            font-size: 26px;
+            font-weight: bold;
+            color: #00BFFF;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        /* ===== PRICING TRANSPARENCY SECTION ===== */
+        .disclaimer-section {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid #00BFFF;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media(min-width: 650px) {
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .info-box {
+            background: #fcfdfe;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #edf2f7;
+        }
+
+        .info-box h4 {
+            text-align: left;
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: #00BFFF;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .comparison-flex ul {
+            list-style: none;
+            padding: 0;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .dont-list { color: #d9534f; margin-bottom: 8px; }
+        .do-list { color: #2e7d32; }
+
+        .payment-steps .step {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .payment-steps .step span {
+            background: #00BFFF;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 11px;
+        }
+
+        .ops-note {
+            margin-top: 20px;
+            padding: 12px;
+            background: #fff9e6;
+            border-left: 4px solid #f0ad4e;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        /* ===== SERVICES TABS ===== */
+        .service-section {
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tabs button {
+            border: 1px solid #dbe3ea;
+            padding: 10px 16px;
+            cursor: pointer;
+            background: #f1f5f9;
+            color: #333;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .tabs button.active {
+            background: #00BFFF;
+            color: #ffffff;
+            border-color: #00BFFF;
+        }
+
+        .tab-content {
+            display: none;
+            background: #fcfdfe;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #edf2f7;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h3 {
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        /* Why Choose */
+        .why-choose {
+            margin-top: 30px;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .why-choose ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .why-choose li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* ===== SERVICES COMBO / ACTION CARDS ===== */
+        .services-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        @media(min-width: 600px) {
+            .services-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .combo-section {
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .bg-white { background: #fff; }
+        .bg-dark { background: #1a202c; color: #fff; }
+        .bg-light { background: #edf2f7; }
+
+        .combo-h3 { font-size: 18px; margin-bottom: 10px; }
+        .text-yellow { color: #f6ad55; }
+        .text-light { color: #cbd5e0; }
+
+        .combo-desc { font-size: 13px; margin-bottom: 15px; }
+
+        .combo-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .btn-outline { border: 1.5px solid #00BFFF; color: #00BFFF; }
+        .btn-yellow { background: #f6ad55; color: #1a202c; }
+        .btn-dark { background: #1a202c; color: #fff; }
+
+        /* ===== FAQ ACCORDION ===== */
+        .faq-section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            color: #00BFFF;
+            margin-bottom: 25px;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 16px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+
+        .faq-question span {
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+            padding: 0 20px;
+        }
+
+        .faq-answer p {
+            margin: 15px 0;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-item.active .faq-question span {
+            transform: rotate(45deg);
+            color: #00BFFF;
+        }
+
+        @media (max-width: 600px) {
+            .tabs {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .tabs button {
+                width: 100%;
+                font-size: 12px;
+                padding: 10px 5px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="header-container">
-        <a href="index.html" class="logo">
-            <img src="image/ecira.png" alt="ECIRA Logo">
-        </a>
-        <div class="header-text">
-            <span class="brand-domain">Ecira</span><span class="brand-suffix">.in</span><br>
-            <span class="tagline">Smart Lighting &amp; Intelligent Automation.</span>
-        </div>
-        <button class="menu-icon" id="menuIcon" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="siteNav">
-            <span></span><span></span><span></span>
-        </button>
-        <nav class="site-nav" id="siteNav">
-            <a href="index.html">Home</a>
-            <a href="gallery.html">Showcase</a>
-            <a href="lighting.html" class="active">Lighting Solutions</a>
-            <a href="https://api1.vyaparapp.in/store/ecira" target="_blank">Shop</a>
-            <a href="solar-power.html">Solar Power</a>
-            <a href="smart-home.html">Smart Home</a>
-            <a href="3d-design.html">3D Simulation</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </div>
-</header>
+    <!-- Dynamic Header -->
+    <script src="header.js"></script>
 
-<main>
-    <div class="projects-wrap">
-        <h1>Architectural LED Lighting &amp; Layout Engineering</h1>
+    <main class="main-container">
 
-        <p>Explore our specialized architectural lighting verticals delivered across Pune, where advanced optical engineering meets premium aesthetic luxury. We do not just install light fixtures; we engineer the perfect lux levels and ambiance based on your furniture blueprint and ceiling configuration. The flawless integration of our technical layouts and premium finishes gives your space an elite, 7-star luxury appeal. Scroll down to explore our core illumination systems.</p>
-
-        <h2>Our Specialized Illumination Systems</h2>
-
-        <!-- Product 1: Ledure Nexa Magnetic Track Light Sizes -->
-        <div class="project-card">
-            <img src="image/track3.jpg" loading="lazy" alt="Ledure Nexa Magnetic Track Light Series | ECIRA Pune">
-            <h3>Ledure Nexa Magnetic Track Systems</h3>
-            <p>Complete structural freedom to move, slide, or adjust light fixtures seamlessly without damaging the false ceiling grid. Available in three distinct sizes: 5mm, 10mm, and 26mm, in classic black and white finishes. Designed to fit every modern architectural space.</p>
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Interior Cost Calculator</h1>
+            <p>Ecira Interiors - Planning & Budgeting Made Transparent</p>
         </div>
 
-        <!-- Product 2: Ledure Nexa Controls & Drivers -->
-        <div class="project-card">
-            <img src="image/track2.jpg" loading="lazy" alt="Ledure Nexa Control and Dimmable System | ECIRA Pune">
-            <h3>Intelligent Controls &amp; Power Drivers</h3>
-            <p>Take absolute control of your lights with seamless dimming interfaces and tunable CCT protocols (3000K to 6500K) via RF 2.4GHz remotes. Deployed with high-performance recessed isolated drivers (100W/200W) for optimal long-term circuit safety.</p>
+        <!-- Calculator & Form Wrapper -->
+        <div class="calculator-wrapper">
+            <div class="calculator-card">
+                
+                <!-- STEP 1: CALCULATOR INPUTS -->
+                <div id="calculatorUI">
+                    <h2>Calculate Project Estimate</h2>
+                    
+                    <div class="calc-grid">
+                        <div class="calc-field">
+                            <label>Design Quality Level</label>
+                            <select id="design">
+                                <option value="1700" selected>Economy (₹1,700/sq.ft)</option>
+                                <option value="2200">Premium (₹2,200/sq.ft)</option>
+                                <option value="3000">Luxury (₹3,000/sq.ft)</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-field">
+                            <label>Bedrooms Count</label>
+                            <select id="bedrooms">
+                                <option value="0" selected>Studio / None</option>
+                                <option value="1">1 BHK / 1 Bedroom</option>
+                                <option value="2">2 BHK / 2 Bedrooms</option>
+                                <option value="3">3 BHK / 3 Bedrooms</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-field">
+                            <label>Carpet Area (Sq.ft)</label>
+                            <input type="number" id="carpet" placeholder="e.g. 800">
+                        </div>
+
+                        <div class="calc-field">
+                            <label>Modular Kitchen (Running Feet)</label>
+                            <input type="number" id="kitchenFeet" placeholder="e.g. 10">
+                        </div>
+
+                        <div class="calc-field">
+                            <label>Kitchen Finish</label>
+                            <select id="kitchenFinish">
+                                <option value="0">Select Finish</option>
+                                <option value="6500">Laminate (₹6,500/ft)</option>
+                                <option value="9200">Acrylic (₹9,200/ft)</option>
+                                <option value="11000">PU Finish (₹11,000/ft)</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-field">
+                            <label>Extra Wardrobe Area (Sq.ft)</label>
+                            <input type="number" id="wardrobe" placeholder="e.g. 40">
+                        </div>
+
+                        <div class="calc-field">
+                            <label>False Ceiling</label>
+                            <select id="ceiling">
+                                <option value="0">No False Ceiling</option>
+                                <option value="150">Yes (₹150/sq.ft)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button class="calc-btn" onclick="showForm()">Calculate Cost</button>
+                </div>
+
+                <!-- STEP 2: LEAD CAPTURE FORM -->
+                <form id="leadForm" onsubmit="submitLead(event)">
+                    <h3>Enter Details to View Quotation</h3>
+                    <div class="calc-field" style="margin-bottom: 12px;">
+                        <label>Full Name</label>
+                        <input type="text" id="name" placeholder="Enter Your Name" required>
+                    </div>
+                    <div class="calc-field" style="margin-bottom: 18px;">
+                        <label>Mobile Number</label>
+                        <input type="tel" id="phone" placeholder="10 Digit Mobile Number" required pattern="[0-9]{10}">
+                    </div>
+                    <button type="submit" class="calc-btn">Show My Estimate</button>
+                </form>
+
+                <!-- STEP 3: RESULT DISPLAY -->
+                <div id="result">
+                    <h3>Estimated Project Cost</h3>
+                    <div id="amount"></div>
+                    <p style="text-align:center; color:#2e7d32; font-weight:600; font-size: 14px;">
+                        Thank you! Our expert designer will contact you shortly with itemized options.
+                    </p>
+                    <button class="calc-btn" onclick="location.reload()" style="background:#666; font-size:13px; width:auto; padding:8px 20px; display:block; margin:15px auto 0 auto;">Recalculate</button>
+                </div>
+
+            </div>
+
+            <!-- DISCLAIMER & TRANSPARENCY SECTION -->
+            <div class="disclaimer-section">
+                <div style="text-align:center;">
+                    <h3 style="color:#00BFFF;">Pricing Transparency</h3>
+                    <p style="font-size:13px; color:#666;">Final pricing depends on actual site dimensions, customization, and material detailing.</p>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-box">
+                        <h4>Why ECIRA Is Different</h4>
+                        <div class="comparison-flex">
+                            <ul class="dont-list">
+                                <li>❌ No showroom overheads passed to client</li>
+                                <li>❌ No forced brand tie-ups or inflated quotes</li>
+                            </ul>
+                            <ul class="do-list">
+                                <li>✅ Local verified execution partners</li>
+                                <li>✅ Transparent material & vendor billing</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Payment Structure</h4>
+                        <div class="payment-steps">
+                            <div class="step"><span>5%</span> Design Initiation & 3D Layout</div>
+                            <div class="step"><span>60%</span> Execution & Procurement Start</div>
+                            <div class="step"><span>Bal</span> Stage-wise Handover Milestones</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ops-note">
+                    <strong>Operational Transparency:</strong> Based in <strong>Pune (Wagholi)</strong>. We work on a project basis with site visits, workshop checks, or direct client consultations.
+                </div>
+            </div>
         </div>
 
-        <!-- Product 3: Ledure Divine COB Spotlights -->
-        <div class="project-card">
-            <img src="image/cob1.jpg" loading="lazy" alt="Ledure Divine COB Light Series | ECIRA Pune">
-            <h3>Ledure Divine COB Spotlights</h3>
-            <p>Premium deeply concealed anti-glare spotlights featuring premium craftsmanship and true color rendering (CRI &gt;90). Operates efficiently at 135 lm/w with robust surge protection up to 4KV. Housing available in Bronze, Steel, Black, and White.</p>
-        </div>
+        <!-- 100% CUSTOM INTERIOR SOLUTIONS TABS -->
+        <section class="service-section">
+            <h2 style="text-align:center; color:#00BFFF;">100% Custom Interior Solutions</h2>
+            <p style="text-align:center; max-width:700px; margin:5px auto 20px auto; color:#555; font-size:14px;">
+                Premium quality interiors delivered on time with zero compromise.
+            </p>
 
-        <!-- Product 4: Ledure Saga COB Series Showcase -->
-        <div class="project-card">
-            <img src="image/cob2.jpg" loading="lazy" alt="Ledure Saga COB Series Luxury Interior Installation | ECIRA Pune">
-            <h3>Ledure Saga Premium COB Series</h3>
-            <p>Engineered for elite aesthetic layouts and continuous grid ceilings. Provides flexible accent adjustments to create visually stunning layers of light over premium kitchen counters, bars, and dining areas.</p>
-        </div>
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="active" onclick="openTab(event,'premium')">Premium Interior</button>
+                <button onclick="openTab(event,'kitchen')">Modular Kitchen</button>
+                <button onclick="openTab(event,'lighting')">Lighting</button>
+                <button onclick="openTab(event,'pop')">POP / Ceiling</button>
+                <button onclick="openTab(event,'furniture')">Furniture</button>
+                <button onclick="openTab(event,'renovation')">Renovation</button>
+                <button onclick="openTab(event,'planning')">Space Planning</button>
+                <button onclick="openTab(event,'visit')">Free Site Visit</button>
+            </div>
 
-        <!-- Product 5: Ledure Saga Technical Details -->
-        <div class="project-card">
-            <img src="image/cob4.jpg" loading="lazy" alt="Ledure Saga COB Shapes and Technical Features | ECIRA Pune">
-            <h3>Saga Versatile Illumination Layouts</h3>
-            <p>Tailored to perfection with round, square, and rectangular architectural shapes supporting single and dual lens modules. Offers adjustable focus capabilities and high-fidelity CRI &gt;90 color projection for commercial and high-end residential needs.</p>
-        </div>
+            <!-- Tab Panels -->
+            <div id="premium" class="tab-content active">
+                <h3>Premium Interior</h3>
+                <p>Comprehensive luxury transformation from concept to final handover. We use HDMR & Birch Plywood with premium PU finishes to ensure durability, elegance, and long life.</p>
+            </div>
 
-        <!-- Product 6: Ledure Olive COB Series -->
-        <div class="project-card">
-            <img src="image/cob5.jpg" loading="lazy" alt="Ledure Olive Focused Beam COB | ECIRA Pune">
-            <h3>Ledure Olive Focused Beam COB</h3>
-            <p>Elegance in every focused beam. Features an architectural aluminum housing with a sophisticated minimal trim. Deploys premium Bridgelux components to provide excellent glare-controlled illumination (CRI &gt;80) for specialized focus pockets.</p>
-        </div>
+            <div id="kitchen" class="tab-content">
+                <h3>Modular Kitchen</h3>
+                <p>Ergonomic kitchen designs using water-proof and termite-proof materials. Integrated with German hardware (Hafele / Hettich) and custom pantry pull-outs.</p>
+            </div>
 
-        <!-- Product 7: Ledure Boost COB Series -->
-        <div class="project-card">
-            <img src="image/cob6.jpg" loading="lazy" alt="Ledure Boost High Brightness COB | ECIRA Pune">
-            <h3>Ledure Boost High-Performance COB</h3>
-            <p>Built to boost, designed to impress. Delivers powerful architectural luminance operating at 140 lm/w with advanced multi-groove heat dissipation grids. The ideal option for crisp illumination and grand room settings.</p>
-        </div>
+            <div id="lighting" class="tab-content">
+                <h3>Lighting</h3>
+                <p>Architectural lighting plans including cove LEDs, profile lights, and mood-based lighting automation to elevate your home's ambience.</p>
+            </div>
 
-        <!-- Product 8: Ledure Casa COB Series -->
-        <div class="project-card">
-            <img src="image/cob7.jpg" loading="lazy" alt="Ledure Casa Luxury COB Lighting | ECIRA Pune">
-            <h3>Ledure Casa Luxury COB Series</h3>
-            <p>Bringing premium luxury and structural warmth into everyday living spaces. Available in an elegant Gun Metal finish, combining aesthetic appeal with heavy-duty durability to deliver true 7-star resort vibes inside your home.</p>
-        </div>
+            <div id="pop" class="tab-content">
+                <h3>POP / Ceiling</h3>
+                <p>Designer false ceilings made with high-quality gypsum. Sharp finishes, concealed wiring, and perfect lighting slots guaranteed.</p>
+            </div>
 
-        <!-- Technical Execution Details -->
-        <div class="project-card">
-            <img src="image/kitchenready11.jpg" loading="lazy" alt="Technical lighting engineering and driver isolation by ECIRA Pune">
-            <h3>Technical Layout &amp; Installation Parameters</h3>
-            <ul>
-                <li>Scientific lux level optimization mapped precisely to localized space acoustics.</li>
-                <li>Isolated backend deployment of heavy-duty LED drivers for absolute circuit safety.</li>
-                <li>High-precision aluminum profile slot routing with zero visual finishing defects.</li>
-                <li>Smart dimming compatibility and tunable color temperatures (Warm to Cool White CCT protocols).</li>
-                <li>100% authentic certified vendor hardware promising long-term operational durability.</li>
-            </ul>
-        </div>
+            <div id="furniture" class="tab-content">
+                <h3>Furniture</h3>
+                <p>Bespoke furniture crafted to exact dimensions – sofas, dining sets, wardrobes with premium upholstery and hardware fittings.</p>
+            </div>
 
-        <div class="projects-links">
-            <a href="3d-design.html">3D Simulation</a>
-            <a href="smart-home.html">Smart Home</a>
-            <a href="gallery.html">Design Showcase</a>
-        </div>
+            <div id="renovation" class="tab-content">
+                <h3>Renovation</h3>
+                <p>Complete transformation of old spaces. Demolition, civil work, flooring, plumbing, and electrical – all managed end-to-end.</p>
+            </div>
 
-        <p>Follow our latest technical smart lighting installations and onsite updates on Facebook:<br>
-        <a href="https://www.facebook.com/profile.php?id=61584722850614" target="_blank" rel="noopener" class="fb-follow-btn">📘 Follow on Facebook</a>
-        </p>
+            <div id="planning" class="tab-content">
+                <h3>Space Planning</h3>
+                <p>Technical 2D/3D layouts designed to maximize every square foot. Vastu-compliant planning with optimized light and ventilation.</p>
+            </div>
 
+            <div id="visit" class="tab-content">
+                <h3>Free Site Visit</h3>
+                <p>Professional on-site measurement and consultation. Our designers visit your location in Pune to understand feasibility and exact requirements.</p>
+            </div>
+
+            <!-- Why Choose -->
+            <div class="why-choose">
+                <h3 style="color:#00BFFF; margin-bottom: 8px;">Why Choose Our Custom Approach?</h3>
+                <p style="font-size:14px; color:#555;">Unlike standard generic packages, our solutions are tailored to your lifestyle. We don't just fill a space — we engineer it for long-term comfort and durability.</p>
+                <ul>
+                    <li><strong>No Showroom Overheads:</strong> You pay purely for materials and quality craftsmanship.</li>
+                    <li><strong>Transparent Billing:</strong> Detailed line-item cost breakup with zero hidden fees.</li>
+                    <li><strong>Expert Coordination:</strong> Dedicated project manager for smooth, on-time delivery.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SERVICES COMBO CARDS -->
         <div class="services-wrapper">
-            <section class="combo-section bg-white">
-                <h3 class="combo-h3">3D Lighting Simulation</h3>
-                <p class="combo-desc">Visualize your space's ideal light spread and track paths with our high-end 3D rendering and simulation models before wiring begins.</p>
-                <a href="3d-design.html" class="combo-btn btn-outline">Explore Simulations</a>
-            </section>
+            <div class="combo-section bg-white">
+                <h3 class="combo-h3" style="color:#00BFFF;">Advanced 3D Design</h3>
+                <p class="combo-desc">Visualize your dream space with high-end 3D rendering and architectural modeling before construction begins.</p>
+                <a href="3d-design.html" class="combo-btn btn-outline">Explore Designs</a>
+            </div>
 
-            <section class="combo-section bg-dark">
-                <h3 class="combo-h3 text-yellow">Smart Home Automation</h3>
-                <p class="combo-desc text-light">Pair your premium lights with capacitive touch switch boards, voice control interfaces, and intelligent sensors.</p>
-                <a href="smart-home.html" class="combo-btn btn-yellow">Explore Smart Home</a>
-            </section>
+            <div class="combo-section bg-dark">
+                <h3 class="combo-h3 text-yellow">Book a Site Visit in Pune</h3>
+                <p class="combo-desc text-light">Plan your budget accurately. Get a detailed home estimate directly at your site.</p>
+                <a href="contact.html" class="combo-btn btn-yellow">Book Now</a>
+            </div>
 
-            <section class="combo-section bg-light">
-                <h3 class="combo-h3">Solar Power Solutions</h3>
-                <p class="combo-desc">Cut electricity bills to zero with heavy-duty rooftop solar configurations and reliable battery backups engineered for Indian load requirements.</p>
-                <a href="solar-power.html" class="combo-btn btn-dark">Explore Solar Power</a>
-            </section>
+            <div class="combo-section bg-white">
+                <h3 class="combo-h3" style="color:#00BFFF;">Completed Projects</h3>
+                <p class="combo-desc">Browse through our portfolio of successfully delivered residential and commercial landmarks across Pune.</p>
+                <a href="projects.html" class="combo-btn btn-outline">View Portfolio</a>
+            </div>
 
-            <section class="combo-section bg-white">
-                <h3 class="combo-h3">Smart Combo Calculator</h3>
-                <p class="combo-desc">Get a comprehensive turnkey interior and integrated lighting architecture layout estimate in <strong>less than 2 minutes</strong>.</p>
-                <a href="javascript:void(0)" onclick="openPopup()" class="combo-btn btn-outline">Calculate Budget</a>
-            </section>
+            <div class="combo-section bg-light">
+                <h3 class="combo-h3">Explore Design Gallery</h3>
+                <p class="combo-desc">Discover inspiring designs and ideas for turning your home interior dreams into reality.</p>
+                <a href="gallery.html" class="combo-btn btn-dark">Design Gallery</a>
+            </div>
         </div>
 
-        <h2>FAQs — Lighting Infrastructure &amp; Engineering</h2>
+        <!-- FAQ ACCORDION -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
 
-        <div class="faq-container">
             <div class="faq-item">
-                <button class="faq-question">Why is architectural lighting layout planning necessary? <span class="icon">+</span></button>
-                <div class="faq-answer"><p>Standard electricians often provide random light points without calculating appropriate lux levels, resulting in uneven shadows or uncomfortable glare. ECIRA scientifically balances the illumination across your furniture layout and ceiling grid to eliminate eye strain and deliver a premium luxury feel.</p></div>
+                <button class="faq-question">
+                    How is interior design pricing calculated?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Interior design pricing depends on scope of work, materials selected, design complexity, and execution requirements. We provide a detailed cost breakup to maintain complete transparency.</p>
+                </div>
             </div>
+
             <div class="faq-item">
-                <button class="faq-question">Can I customize or tune the brightness of these LED fixtures? <span class="icon">+</span></button>
-                <div class="faq-answer"><p>Absolutely. All architectural profiles and COB spotlights deployed by ECIRA support smart dimming protocols. You can easily scale down brightness levels from 10% to 100% via smartphone apps, voice commands (Alexa/Google Assistant), or premium capacitive touch dimmers.</p></div>
+                <button class="faq-question">
+                    Is the pricing different for modular kitchens and full home interiors?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. Modular kitchens are priced based on layout, material finishes, and hardware fittings, while full home interiors include multiple spaces such as living rooms, bedrooms, wardrobes, ceilings, and lighting.</p>
+                </div>
             </div>
+
             <div class="faq-item">
-                <button class="faq-question">What is the maintenance protocol for hidden LED drivers? <span class="icon">+</span></button>
-                <div class="faq-answer"><p>During our technical execution, we conceal all heavy-duty drivers and adapter units inside a centralized, secure, and easily accessible service pocket within the false ceiling. This ensures future maintenance or smart upgrades can be managed effortlessly without breaking any structures.</p></div>
+                <button class="faq-question">
+                    Do you charge per square foot for interior design?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We do not follow a rigid per square foot model. Our pricing is customized based on design requirements, material quality, and functionality rather than just flat area.</p>
+                </div>
             </div>
-        </div>
-    </div>
-</main>
 
-<div class="side-enquiry-btns left-side">
-    <button class="enq-btn" onclick="openPopup()">ENQUIRY</button>
-    <a href="https://wa.me/919987228829" target="_blank" class="enq-btn quote-btn">GET QUOTE</a>
-</div>
-
-<footer class="premium-footer-3col">
-    <div class="footer-container-3col">
-        <div class="footer-col">
-            <h3>Architectural &amp; Smart Systems</h3>
-            <p>Premium automation and lighting layouts delivering modern aesthetics, control efficiency, and flawless technical execution.</p>
-            <div class="features">
-                <span>✔ 100% Smart Controls Integration</span>
-                <span>✔ Heavy-Duty Component Warranty</span>
-                <span>✔ Transparent Node Pricing</span>
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is included in the interior design pricing?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Pricing includes design consultation, 2D/3D layouts, material selection, manufacturing, installation, project coordination, and quality checks.</p>
+                </div>
             </div>
-        </div>
-        <div class="footer-col">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="https://api1.vyaparapp.in/store/ecira" target="_blank">Online Store</a></li>
-                <li><a href="https://api1.vyaparapp.in/store/ecira" target="_blank">Shop</a></li>
-                <li><a href="3d-design.html">3D Simulation</a></li>
-                <li><a href="gallery.html">Design Showcase</a></li>
-                <li><a href="projects.html">Completed Projects</a></li>
-                <li><a href="smart-home.html">Smart Home</a></li>
-                <li><a href="solar-power.html">Solar Power</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Contact</h4>
-            <p>📞 <a href="tel:+919987228829">99872 28829</a></p>
-            <p>💬 <a href="https://wa.me/919987228829">WhatsApp</a></p>
-            <p>✉️ <a href="mailto:my@ecira.in">my@ecira.in</a></p>
-            <p>Nagar Road Wagholi<br>Pune 412207</p>
-            <div class="social">
-                <a href="https://www.facebook.com/profile.php?id=61584722850614" target="_blank" rel="noopener">Facebook</a>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Are your interior designs customizable?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely. Every design is 100% customized to suit your lifestyle, budget, and space. We do not force fixed pre-made packages.</p>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="share-links">
-            <span>Share:</span> FB | WA | IN | X | <span onclick="copyLink()" style="color:#00d4aa; cursor:pointer;">Copy</span>
-        </div>
-        <p>&copy; 2026 ECIRA.in. All Rights Reserved.</p>
-    </div>
-</footer>
 
-<a href="https://wa.me/919987228829" class="whatsapp-fixed-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <img src="image/whatsapp-icon.svg" alt="WhatsApp">
-</a>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Is the site visit or consultation chargeable in Pune?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>No. Our site visit and initial consultation in Pune (including Wagholi and nearby areas) are completely free, allowing us to evaluate your site accurately.</p>
+                </div>
+            </div>
 
-<div class="mobile-sticky-nav" id="mobileNav">
-    <a href="index.html">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V9.5z"/></svg>
-        <span>Home</span>
-    </a>
-    <a href="https://api1.vyaparapp.in/store/ecira" target="_blank">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-        <span>Shop</span>
-    </a>
-    <a href="3d-design.html">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-        <span>3D Design</span>
-    </a>
-    <a href="gallery.html">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        <span>Gallery</span>
-    </a>
-    <a href="smart-home.html">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21V12h6v9"/><path d="M3 10l9-7 9 7"/><path d="M19 10v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9"/></svg>
-        <span>Smart Home</span>
-    </a>
-</div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    When is the final price confirmed?
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>The final price is confirmed after design finalization, 3D approvals, and material selection — before execution begins on site.</p>
+                </div>
+            </div>
+        </section>
 
-<div id="enquiryPopup" class="popup-overlay">
-    <div class="popup-content">
-        <button class="close-btn" onclick="closePopup()" aria-label="Close">&times;</button>
-        <div id="formContainer">
-            <h2>Enquiry</h2>
-            <form id="g-form" onsubmit="handleFormSubmit(event)">
-                <input type="text" name="name" placeholder="Name *" required>
-                <input type="tel" name="phone" placeholder="Phone Number *" required>
-                <button type="submit" id="submitBtn">SUBMIT</button>
-            </form>
-        </div>
-        <div id="thankYouMsg" style="display:none; text-align:center; padding:20px;">
-            <h3 style="color:#28a745;">Thank you!</h3>
-            <p>We'll contact you within 24 hours.</p>
-        </div>
-    </div>
-</div>
+    </main>
 
-<script src="js/site-behavior.js"></script>
-<script src="js/slider.js"></script>
+    <!-- Dynamic Footer -->
+    <div id="footer-placeholder"></div>
+    <script src="footer.js"></script>
+
+    <!-- CALCULATOR & INTERACTIVE JAVASCRIPT -->
+    <script>
+        let calculatedTotal = 0;
+
+        function showForm() {
+            const getVal = (id) => Number(document.getElementById(id).value) || 0;
+
+            let designRate = getVal('design');
+            let bedroomCount = getVal('bedrooms');
+            let carpet = getVal('carpet');
+            let kFeet = getVal('kitchenFeet');
+            let kFinish = getVal('kitchenFinish');
+            let ward = getVal('wardrobe');
+            let ceil = getVal('ceiling');
+
+            // Bedroom Pricing Calculation
+            let bedroomPrice = 0;
+            if (designRate === 1700) bedroomPrice = bedroomCount * 100000;
+            else if (designRate === 2200) bedroomPrice = bedroomCount * 125000;
+            else if (designRate === 3000) bedroomPrice = bedroomCount * 150000;
+
+            // Total Calculation Logic
+            calculatedTotal = 
+                (carpet * designRate) + 
+                bedroomPrice + 
+                (kFeet * kFinish) + 
+                (ward * 1400) + 
+                (carpet * ceil);
+
+            if (calculatedTotal <= 0) {
+                alert("कृपया Carpet Area डालें या कोई विकल्प चुनें।");
+                return;
+            }
+
+            document.getElementById('calculatorUI').style.display = "none";
+            document.getElementById('leadForm').style.display = "block";
+        }
+
+        function submitLead(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            let minPrice = Math.round(calculatedTotal * 0.85);
+            let maxPrice = Math.round(calculatedTotal * 1.20);
+
+            document.getElementById('amount').innerHTML = "₹ " + minPrice.toLocaleString("en-IN") + " – ₹ " + maxPrice.toLocaleString("en-IN");
+            
+            // Google Sheets Integration
+            const scriptURL = "https://script.google.com/macros/s/AKfycbyYZc_2LzGUJ0FVhqjzCUkAlU1tBimo8_FXOXMFCJPI_mC9KCu0yPGJD1x_-FGP7lRVfA/exec";
+            const formData = new URLSearchParams();
+            formData.append('name', name);
+            formData.append('phone', phone);
+            formData.append('estimated_cost', calculatedTotal);
+
+            fetch(scriptURL, { method: "POST", mode: "no-cors", body: formData })
+                .catch(err => console.log("Form submission error:", err));
+
+            document.getElementById('leadForm').style.display = "none";
+            document.getElementById('result').style.display = "block";
+        }
+
+        /* Tabs Functionality */
+        function openTab(evt, tabId) {
+            let contents = document.querySelectorAll(".tab-content");
+            let buttons = document.querySelectorAll(".tabs button");
+
+            contents.forEach(c => c.classList.remove("active"));
+            buttons.forEach(b => b.classList.remove("active"));
+
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        /* FAQ Accordion Functionality */
+        document.querySelectorAll(".faq-question").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const item = btn.parentElement;
+
+                document.querySelectorAll(".faq-item").forEach(faq => {
+                    if (faq !== item) {
+                        faq.classList.remove("active");
+                    }
+                });
+
+                item.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 </html>
