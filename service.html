@@ -101,6 +101,18 @@
             border-color: #00BFFF;
         }
 
+        .lead-section-title {
+            grid-column: 1 / -1;
+            background: #e6f7ff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #00BFFF;
+            font-weight: 600;
+            font-size: 14px;
+            color: #0077b6;
+            margin-top: 10px;
+        }
+
         .calc-btn {
             width: 100%;
             padding: 14px;
@@ -120,13 +132,13 @@
             transform: translateY(-2px);
         }
 
-        /* Forms & Results Display Toggle */
-        #leadForm, #result {
+        /* Result Container initially hidden */
+        #resultContainer {
             display: none;
         }
 
         #amount {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: bold;
             color: #00BFFF;
             margin: 15px 0;
@@ -258,7 +270,6 @@
             margin-bottom: 10px;
         }
 
-        /* Why Choose */
         .why-choose {
             margin-top: 30px;
             background: #f8fafc;
@@ -276,7 +287,7 @@
             font-size: 14px;
         }
 
-        /* ===== SERVICES COMBO / ACTION CARDS ===== */
+        /* ===== ACTION CARDS ===== */
         .services-wrapper {
             display: grid;
             grid-template-columns: 1fr;
@@ -398,7 +409,8 @@
 </head>
 <body>
 
-    <!-- Dynamic Header -->
+    <!-- DYNAMIC HEADER / NAVIGATION MENU -->
+    <div id="header-placeholder"></div>
     <script src="header.js"></script>
 
     <main class="main-container">
@@ -409,12 +421,12 @@
             <p>Ecira Interiors - Planning & Budgeting Made Transparent</p>
         </div>
 
-        <!-- Calculator & Form Wrapper -->
+        <!-- Calculator & Lead Form Wrapper -->
         <div class="calculator-wrapper">
             <div class="calculator-card">
                 
-                <!-- STEP 1: CALCULATOR INPUTS -->
-                <div id="calculatorUI">
+                <!-- UNIFIED FORM: User enters requirements + Name & Mobile Number -->
+                <form id="calcForm" onsubmit="calculateAndSubmit(event)">
                     <h2>Calculate Project Estimate</h2>
                     
                     <div class="calc-grid">
@@ -439,7 +451,7 @@
 
                         <div class="calc-field">
                             <label>Carpet Area (Sq.ft)</label>
-                            <input type="number" id="carpet" placeholder="e.g. 800">
+                            <input type="number" id="carpet" placeholder="e.g. 800" required min="100">
                         </div>
 
                         <div class="calc-field">
@@ -469,38 +481,39 @@
                                 <option value="150">Yes (₹150/sq.ft)</option>
                             </select>
                         </div>
+
+                        <!-- MANDATORY LEAD DETAILS -->
+                        <div class="lead-section-title">
+                            🔒 Enter contact details to unlock your instant quotation
+                        </div>
+
+                        <div class="calc-field">
+                            <label>Full Name *</label>
+                            <input type="text" id="name" placeholder="Enter Your Name" required>
+                        </div>
+
+                        <div class="calc-field">
+                            <label>Mobile Number *</label>
+                            <input type="tel" id="phone" placeholder="10 Digit Mobile Number" required pattern="[0-9]{10}">
+                        </div>
                     </div>
                     
-                    <button class="calc-btn" onclick="showForm()">Calculate Cost</button>
-                </div>
-
-                <!-- STEP 2: LEAD CAPTURE FORM -->
-                <form id="leadForm" onsubmit="submitLead(event)">
-                    <h3>Enter Details to View Quotation</h3>
-                    <div class="calc-field" style="margin-bottom: 12px;">
-                        <label>Full Name</label>
-                        <input type="text" id="name" placeholder="Enter Your Name" required>
-                    </div>
-                    <div class="calc-field" style="margin-bottom: 18px;">
-                        <label>Mobile Number</label>
-                        <input type="tel" id="phone" placeholder="10 Digit Mobile Number" required pattern="[0-9]{10}">
-                    </div>
                     <button type="submit" class="calc-btn">Show My Estimate</button>
                 </form>
 
-                <!-- STEP 3: RESULT DISPLAY -->
-                <div id="result">
+                <!-- RESULT DISPLAY (Hidden until Form Submission) -->
+                <div id="resultContainer">
                     <h3>Estimated Project Cost</h3>
                     <div id="amount"></div>
                     <p style="text-align:center; color:#2e7d32; font-weight:600; font-size: 14px;">
-                        Thank you! Our expert designer will contact you shortly with itemized options.
+                        Thank you! Our design expert will contact you shortly with an itemized quote.
                     </p>
                     <button class="calc-btn" onclick="location.reload()" style="background:#666; font-size:13px; width:auto; padding:8px 20px; display:block; margin:15px auto 0 auto;">Recalculate</button>
                 </div>
 
             </div>
 
-            <!-- DISCLAIMER & TRANSPARENCY SECTION -->
+            <!-- PRICING TRANSPARENCY SECTION -->
             <div class="disclaimer-section">
                 <div style="text-align:center;">
                     <h3 style="color:#00BFFF;">Pricing Transparency</h3>
@@ -610,7 +623,7 @@
             </div>
         </section>
 
-        <!-- SERVICES COMBO CARDS -->
+        <!-- ACTION CARDS -->
         <div class="services-wrapper">
             <div class="combo-section bg-white">
                 <h3 class="combo-h3" style="color:#00BFFF;">Advanced 3D Design</h3>
@@ -714,15 +727,23 @@
 
     </main>
 
-    <!-- Dynamic Footer -->
+    <!-- DYNAMIC FOOTER -->
     <div id="footer-placeholder"></div>
     <script src="footer.js"></script>
 
     <!-- CALCULATOR & INTERACTIVE JAVASCRIPT -->
     <script>
-        let calculatedTotal = 0;
+        function calculateAndSubmit(e) {
+            e.preventDefault();
 
-        function showForm() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            if (!name || !phone || phone.length !== 10) {
+                alert("कृपया अपना पूरा नाम और 10 अंकों का मोबाइल नंबर सही से भरें।");
+                return;
+            }
+
             const getVal = (id) => Number(document.getElementById(id).value) || 0;
 
             let designRate = getVal('design');
@@ -739,8 +760,8 @@
             else if (designRate === 2200) bedroomPrice = bedroomCount * 125000;
             else if (designRate === 3000) bedroomPrice = bedroomCount * 150000;
 
-            // Total Calculation Logic
-            calculatedTotal = 
+            // Total Calculation
+            let calculatedTotal = 
                 (carpet * designRate) + 
                 bedroomPrice + 
                 (kFeet * kFinish) + 
@@ -748,26 +769,18 @@
                 (carpet * ceil);
 
             if (calculatedTotal <= 0) {
-                alert("कृपया Carpet Area डालें या कोई विकल्प चुनें।");
+                alert("कृपया कम से कम Carpet Area दर्ज करें।");
                 return;
             }
 
-            document.getElementById('calculatorUI').style.display = "none";
-            document.getElementById('leadForm').style.display = "block";
-        }
-
-        function submitLead(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-
+            // Price Range Formatting
             let minPrice = Math.round(calculatedTotal * 0.85);
             let maxPrice = Math.round(calculatedTotal * 1.20);
 
+            // Calculate ONLY NOW after form submit validation
             document.getElementById('amount').innerHTML = "₹ " + minPrice.toLocaleString("en-IN") + " – ₹ " + maxPrice.toLocaleString("en-IN");
-            
-            // Google Sheets Integration
+
+            // Google Sheets Lead Integration
             const scriptURL = "https://script.google.com/macros/s/AKfycbyYZc_2LzGUJ0FVhqjzCUkAlU1tBimo8_FXOXMFCJPI_mC9KCu0yPGJD1x_-FGP7lRVfA/exec";
             const formData = new URLSearchParams();
             formData.append('name', name);
@@ -777,8 +790,9 @@
             fetch(scriptURL, { method: "POST", mode: "no-cors", body: formData })
                 .catch(err => console.log("Form submission error:", err));
 
-            document.getElementById('leadForm').style.display = "none";
-            document.getElementById('result').style.display = "block";
+            // Hide Calculator Form & Reveal Result
+            document.getElementById('calcForm').style.display = "none";
+            document.getElementById('resultContainer').style.display = "block";
         }
 
         /* Tabs Functionality */
